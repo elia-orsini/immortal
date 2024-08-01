@@ -1,7 +1,8 @@
-import drawnFont from "@/utils/drawnFont";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import TextPlugin from "gsap/TextPlugin";
+
+import drawnFont from "@/utils/drawnFont";
 
 const AnimatedIntro: React.FC = () => {
   useGSAP(() => {

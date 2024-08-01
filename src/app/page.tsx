@@ -1,11 +1,8 @@
 "use client";
 
 import AnimatedIntro from "@/components/AnimatedIntro";
-import MagazineTitle from "@/components/MagazineTitle";
 import MagazinesList from "@/components/MagazinesList";
 import useMagazines from "@/hooks/useMagazines";
-import Magazine from "@/types/IMagazine";
-import { useEffect } from "react";
 
 export default function Home() {
   const { magazines, isLoading } = useMagazines();

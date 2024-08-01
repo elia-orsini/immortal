@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const MagazineTitle: React.FC<{ magazine: Magazine }> = ({ magazine }) => {
   return (
-    <div className="grid grid-cols-2 justify-between gap-x-20">
+    <div className="grid grid-cols-2 justify-between gap-x-20 my-0.5">
       {magazine.doesHaveAPage ? (
         <Link className="bg-lime-400 w-max" href={`/magazine/${magazine.id}`}>
           {magazine.name}
