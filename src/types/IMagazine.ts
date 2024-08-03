@@ -5,6 +5,7 @@ export default interface Magazine {
   field: string;
   status: string;
   city: string;
-  issuesPerYear: number;
+  issuesPerYear: number | string;
+  issuesNumber: number | string;
   doesHaveAPage: boolean;
 }

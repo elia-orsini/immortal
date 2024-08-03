@@ -10,6 +10,7 @@ import drawnFont from "@/utils/drawnFont";
 import SingleMagazineHeader from "@/components/SingleMagazineHeader";
 import useSingleMagazineData from "@/hooks/useSingleMagazineData";
 import useSingleMagazineMeta from "@/hooks/useSingleMagazineMeta";
+import SingleMagazineMeta from "@/components/SingleMagazineMeta";
 
 const SingleMagazine: NextPage<{ params: any }> = ({ params }) => {
   const { magazineData, isLoadingData } = useSingleMagazineData(params.slug);
@@ -27,6 +28,8 @@ const SingleMagazine: NextPage<{ params: any }> = ({ params }) => {
       </div>
 
       <SingleMagazineHeader meta={magazineMeta} />
+
+      <SingleMagazineMeta meta={magazineMeta} />
 
       <div className="mx-auto w-11/12 sm:w-8/12">
         <NotionRenderer blockMap={magazineData} />

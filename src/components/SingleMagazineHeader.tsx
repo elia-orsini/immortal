@@ -7,16 +7,6 @@ import Magazine from "@/types/IMagazine";
 import Image from "next/image";
 
 const SingleMagazineHeader: React.FC<{ meta: Magazine }> = ({ meta }) => {
-  useGSAP(() => {
-    gsap.registerPlugin(TextPlugin);
-
-    gsap.from("#AnimatedLogoSVG", {
-      duration: 2,
-      text: "",
-      ease: "none",
-    });
-  }, []);
-
   return (
     <div className="w-full h-[30vh] flex">
       <div className="absolute w-full h-[30vh]">
@@ -30,7 +20,9 @@ const SingleMagazineHeader: React.FC<{ meta: Magazine }> = ({ meta }) => {
         </div>
       </div>
 
-      <p className="m-auto z-10 bg-black text-white text-4xl px-2">
+      <p
+        className={`m-auto z-10 bg-black text-white text-4xl px-2 ${drawnFont}`}
+      >
         {meta.name}
       </p>
     </div>
