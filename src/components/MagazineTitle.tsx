@@ -7,7 +7,10 @@ const MagazineTitle: React.FC<{ magazine: Magazine }> = ({ magazine }) => {
   return (
     <div className="grid grid-cols-2 justify-between gap-x-20 my-0.5 text-sm sm:text-base">
       {magazine.doesHaveAPage ? (
-        <Link className="bg-lime-400 w-max" href={`/magazine/${magazine.id}`}>
+        <Link
+          className="bg-lime-400 w-max my-auto"
+          href={`/magazine/${magazine.id}`}
+        >
           {magazine.name}
         </Link>
       ) : (
@@ -17,7 +20,7 @@ const MagazineTitle: React.FC<{ magazine: Magazine }> = ({ magazine }) => {
       <div
         className={`flex flex-row text-xs sm:text-base justify-between ${drawnFont}`}
       >
-        <p>
+        <p className="w-full my-auto">
           {magazine.status === "DEAD" ? (
             <>
               <Image
@@ -33,7 +36,7 @@ const MagazineTitle: React.FC<{ magazine: Magazine }> = ({ magazine }) => {
             magazine.status
           )}
         </p>
-        <p className="text-left">{magazine.city}</p>
+        <p className="text-left w-full my-auto">{magazine.city}</p>
       </div>
     </div>
   );
