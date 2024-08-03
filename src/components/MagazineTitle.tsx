@@ -1,5 +1,6 @@
 import Magazine from "@/types/IMagazine";
 import drawnFont from "@/utils/drawnFont";
+import Image from "next/image";
 import Link from "next/link";
 
 const MagazineTitle: React.FC<{ magazine: Magazine }> = ({ magazine }) => {
@@ -14,7 +15,22 @@ const MagazineTitle: React.FC<{ magazine: Magazine }> = ({ magazine }) => {
       )}
 
       <div className={`flex flex-row justify-between ${drawnFont}`}>
-        <p className="text-right">{magazine.status}</p>
+        <p>
+          {magazine.status === "DEAD" ? (
+            <>
+              <Image
+                src="/skull.svg"
+                alt="skull image"
+                className="-ml-2 -mr-1 inline"
+                width={24}
+                height={20}
+              />
+              <span>{magazine.status}</span>
+            </>
+          ) : (
+            magazine.status
+          )}
+        </p>
         <p className="text-left">{magazine.city}</p>
       </div>
     </div>
