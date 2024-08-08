@@ -18,14 +18,14 @@ const AnimatedIntro: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full h-[30vh] flex">
+    <nav className="w-full h-[30vh] flex">
       <p
         id="AnimatedLogoSVG"
         className={`${drawnFont} m-auto text-[50px] sm:text-[90px]`}
       >
         immortal mags
       </p>
-    </div>
+    </nav>
   );
 };
 

@@ -37,13 +37,13 @@ const SingleMagazine: NextPage<{ params: any }> = async ({ params }) => {
   const { magazineData, magazineMeta } = await dataFetcher(params.slug);
 
   return (
-    <div className="flex min-h-screen w-screen flex-col mb-20">
-      <div className="w-full h-10 border-b border-black px-2 sm:px-10 flex">
+    <main className="flex min-h-screen w-screen flex-col mb-20">
+      <nav className="w-full h-10 border-b border-black px-2 sm:px-10 flex">
         <Link href="/" className={`my-auto ${drawnFont}`}>
           {" "}
           immortal mags
         </Link>
-      </div>
+      </nav>
 
       <SingleMagazineHeader meta={magazineMeta} />
 
@@ -52,7 +52,7 @@ const SingleMagazine: NextPage<{ params: any }> = async ({ params }) => {
       <div className="mx-auto w-11/12 sm:w-8/12">
         <NotionRenderer blockMap={magazineData} />
       </div>
-    </div>
+    </main>
   );
 };
 
