@@ -8,4 +8,5 @@ export default interface Magazine {
   issuesPerYear: number | string;
   issuesNumber: number | string;
   doesHaveAPage: boolean;
+  description: string;
 }

@@ -66,8 +66,11 @@ export async function generateMetadata(
 
   const previousImages = (await parent).openGraph?.images || [];
 
+  const description = magazineMeta.description || (await parent).description;
+
   return {
     title: magazineMeta.name,
+    description: description,
     openGraph: {
       images: [`${magazineMeta.imageCover[0].url}`, ...previousImages],
     },
