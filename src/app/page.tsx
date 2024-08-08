@@ -12,10 +12,10 @@ export default async function Home() {
   const { magazines } = await dataFetcher();
 
   return (
-    <div className="flex min-h-screen w-screen flex-col mb-20">
+    <main className="flex min-h-screen w-screen flex-col mb-20">
       <AnimatedIntro />
 
       <MagazinesList magazines={magazines} />
-    </div>
+    </main>
   );
 }

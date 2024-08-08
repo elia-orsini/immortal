@@ -8,7 +8,7 @@ import Image from "next/image";
 
 const SingleMagazineMeta: React.FC<{ meta: Magazine }> = ({ meta }) => {
   return (
-    <div className="w-full flex flex-col sm:flex-row border-b px-2 sm:px-10 border-black justify-between font-mono">
+    <section className="w-full flex flex-col sm:flex-row border-b px-2 sm:px-10 border-black justify-between font-mono">
       <p className="">based in {meta.city}</p>
       <p className="">
         {meta.issuesPerYear === "-"
@@ -16,7 +16,7 @@ const SingleMagazineMeta: React.FC<{ meta: Magazine }> = ({ meta }) => {
           : `${meta.issuesPerYear} issues/year`}
       </p>
       <p className="">{meta.issuesNumber} issues total</p>
-    </div>
+    </section>
   );
 };
 

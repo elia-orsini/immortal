@@ -49,9 +49,9 @@ const SingleMagazine: NextPage<{ params: any }> = async ({ params }) => {
 
       <SingleMagazineMeta meta={magazineMeta} />
 
-      <div className="mx-auto w-11/12 sm:w-8/12">
+      <article className="mx-auto w-11/12 sm:w-8/12">
         <NotionRenderer blockMap={magazineData} />
-      </div>
+      </article>
     </main>
   );
 };
