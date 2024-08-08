@@ -1,6 +1,7 @@
+import { Metadata } from "next";
+
 import AnimatedIntro from "@/components/AnimatedIntro";
 import MagazinesList from "@/components/MagazinesList";
-import { Metadata } from "next";
 
 const dataFetcher = async (): Promise<{ magazines: any }> => {
   const magazinesDataRaw = await fetch(process.env.URL + `/api/magazines`);
