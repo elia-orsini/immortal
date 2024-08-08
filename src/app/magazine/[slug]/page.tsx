@@ -1,22 +1,29 @@
-"use client";
-
 import "react-notion/src/styles.css";
 import "prismjs/themes/prism-tomorrow.css";
-import { NextPage } from "next";
+import { Metadata, NextPage, ResolvingMetadata } from "next";
 import Link from "next/link";
 import { NotionRenderer } from "react-notion";
 
 import drawnFont from "@/utils/drawnFont";
 import SingleMagazineHeader from "@/components/SingleMagazineHeader";
-import useSingleMagazineData from "@/hooks/useSingleMagazineData";
-import useSingleMagazineMeta from "@/hooks/useSingleMagazineMeta";
 import SingleMagazineMeta from "@/components/SingleMagazineMeta";
 
-const SingleMagazine: NextPage<{ params: any }> = ({ params }) => {
-  const { magazineData, isLoadingData } = useSingleMagazineData(params.slug);
-  const { magazineMeta, isLoadingMeta } = useSingleMagazineMeta(params.slug);
+const dataFetcher = async (slug: string): Promise<any> => {
+  const magazineDataRaw = await fetch(
+    process.env.URL + `/api/magazineData/${slug}`
+  );
+  const magazineData = await magazineDataRaw.json();
 
-  if (isLoadingData || isLoadingMeta) return <></>;
+  const magazineMetaRaw = await fetch(
+    process.env.URL + `/api/magazine/${slug}`
+  );
+  const magazineMeta = await magazineMetaRaw.json();
+
+  return { magazineData, magazineMeta };
+};
+
+const SingleMagazine: NextPage<{ params: any }> = async ({ params }) => {
+  const { magazineData, magazineMeta } = await dataFetcher(params.slug);
 
   return (
     <div className="flex min-h-screen w-screen flex-col mb-20">
@@ -39,3 +46,19 @@ const SingleMagazine: NextPage<{ params: any }> = ({ params }) => {
 };
 
 export default SingleMagazine;
+
+export async function generateMetadata(
+  { params }: any,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const { magazineMeta } = await dataFetcher(params.slug);
+
+  const previousImages = (await parent).openGraph?.images || [];
+
+  return {
+    title: magazineMeta.name,
+    openGraph: {
+      images: [`${magazineMeta.imageCover[0].url}`, ...previousImages],
+    },
+  };
+}

@@ -1,19 +1,16 @@
-"use client";
-
 import AnimatedIntro from "@/components/AnimatedIntro";
 import MagazinesList from "@/components/MagazinesList";
-import useMagazines from "@/hooks/useMagazines";
+import { Metadata } from "next";
 
-export default function Home() {
-  const { magazines, isLoading } = useMagazines();
+const dataFetcher = async (): Promise<{ magazines: any }> => {
+  const magazinesDataRaw = await fetch(process.env.URL + `/api/magazines`);
+  const magazinesData = await magazinesDataRaw.json();
 
-  if (isLoading) {
-    return (
-      <div className="h-screen w-full flex">
-        <p className="m-auto">loading</p>
-      </div>
-    );
-  }
+  return { magazines: magazinesData };
+};
+
+export default async function Home() {
+  const { magazines } = await dataFetcher();
 
   return (
     <div className="flex min-h-screen w-screen flex-col mb-20">
@@ -23,3 +20,11 @@ export default function Home() {
     </div>
   );
 }
+
+export const metadata: Metadata = {
+  title: {
+    template: "%s | Immortal Mags",
+    default: "Immortal Mags",
+  },
+  description: "Immortal Mags - where magazines will never die.",
+};

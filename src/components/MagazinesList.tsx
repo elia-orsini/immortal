@@ -1,3 +1,5 @@
+"use client"
+
 import Magazine from "@/types/IMagazine";
 import MagazineTitle from "./MagazineTitle";
 import { useEffect, useState } from "react";
