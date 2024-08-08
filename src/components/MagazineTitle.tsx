@@ -1,4 +1,5 @@
 import Magazine from "@/types/IMagazine";
+import convertSlugToPath from "@/utils/convertSlugToPath";
 import drawnFont from "@/utils/drawnFont";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,7 +10,7 @@ const MagazineTitle: React.FC<{ magazine: Magazine }> = ({ magazine }) => {
       {magazine.doesHaveAPage ? (
         <Link
           className="bg-lime-400 w-max my-auto"
-          href={`/magazine/${magazine.id}`}
+          href={`/magazine/${convertSlugToPath(magazine.name)}`}
         >
           {magazine.name}
         </Link>

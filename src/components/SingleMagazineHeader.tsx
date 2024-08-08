@@ -13,7 +13,7 @@ const SingleMagazineHeader: React.FC<{ meta: Magazine }> = ({ meta }) => {
         <div className="relative w-full h-full border-b border-black">
           <Image
             src={meta.imageCover[0].url}
-            alt={`${meta.name}_bg_image`}
+            alt={`${meta.name} Cover Image`}
             className="object-cover"
             fill
           />
