@@ -1,5 +1,3 @@
-import { Metadata } from "next";
-
 import AnimatedIntro from "@/components/AnimatedIntro";
 import MagazinesList from "@/components/MagazinesList";
 
@@ -21,11 +19,3 @@ export default async function Home() {
     </div>
   );
 }
-
-export const metadata: Metadata = {
-  title: {
-    template: "%s | Immortal Mags",
-    default: "Immortal Mags",
-  },
-  description: "Immortal Mags - where magazines will never die.",
-};
