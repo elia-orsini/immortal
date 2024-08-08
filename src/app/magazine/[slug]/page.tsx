@@ -60,6 +60,5 @@ export async function generateMetadata(
     openGraph: {
       images: [`${magazineMeta.imageCover[0].url}`, ...previousImages],
     },
-    description: "Immortal Mags - where magazines will never die.",
   };
 }

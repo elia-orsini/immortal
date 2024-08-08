@@ -22,4 +22,8 @@ export const metadata: Metadata = {
     default: "Immortal Mags",
   },
   description: "Immortal Mags - where magazines will never die.",
+  creator: "Elia Orsini",
+  applicationName: "Immortal Mags",
+  keywords: ["Magazines", "Mags"],
+  referrer: "origin-when-cross-origin",
 };
