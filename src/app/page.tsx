@@ -2,8 +2,9 @@ import AnimatedIntro from "@/components/AnimatedIntro";
 import MagazinesList from "@/components/MagazinesList";
 
 const dataFetcher = async (): Promise<{ magazines: any }> => {
-  const magazinesDataRaw = await fetch(process.env.URL + `/api/magazines`);
-  const magazinesData = await magazinesDataRaw.json();
+  const magazinesData = await fetch(process.env.URL + `/api/magazines`).then(
+    (res) => res.json()
+  );
 
   return { magazines: magazinesData };
 };

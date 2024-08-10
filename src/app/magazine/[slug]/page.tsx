@@ -11,8 +11,9 @@ import convertPathToSlug from "@/utils/convertPathToSlug";
 import Magazine from "@/types/IMagazine";
 
 const dataFetcher = async (slug: string): Promise<any> => {
-  const magazinesDataRaw = await fetch(process.env.URL + `/api/magazines`);
-  const magazinesData = await magazinesDataRaw.json();
+  const magazinesData = await fetch(process.env.URL + `/api/magazines`).then(
+    (res) => res.json()
+  );
 
   const match = magazinesData.find(
     (mag: Magazine) => mag.name.toLowerCase() === convertPathToSlug(slug)
@@ -20,15 +21,13 @@ const dataFetcher = async (slug: string): Promise<any> => {
 
   const path = match.id;
 
-  const magazineDataRaw = await fetch(
+  const magazineData = await fetch(
     process.env.URL + `/api/magazineData/${path}`
-  );
-  const magazineData = await magazineDataRaw.json();
+  ).then((res) => res.json());
 
-  const magazineMetaRaw = await fetch(
+  const magazineMeta = await fetch(
     process.env.URL + `/api/magazine/${path}`
-  );
-  const magazineMeta = await magazineMetaRaw.json();
+  ).then((res) => res.json());
 
   return { magazineData, magazineMeta };
 };

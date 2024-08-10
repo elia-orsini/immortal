@@ -27,3 +27,5 @@ export const metadata: Metadata = {
   keywords: ["Magazines", "Mags"],
   referrer: "origin-when-cross-origin",
 };
+
+export const revalidate = 360; // revalidate at most every 6 minutes

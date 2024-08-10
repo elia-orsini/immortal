@@ -3,8 +3,9 @@ import convertSlugToPath from "@/utils/convertSlugToPath";
 import { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const magazinesDataRaw = await fetch(process.env.URL + `/api/magazines`);
-  const magazinesData = await magazinesDataRaw.json();
+  const magazinesData = await fetch(process.env.URL + `/api/magazines`).then(
+    (res) => res.json()
+  );
 
   const sitemapPages: any[] = [];
 
