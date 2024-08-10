@@ -9,8 +9,6 @@ export default function sortGroupMagazines(magazines: Magazine[]) {
 
   // divide by category
   magazines.forEach((mag) => {
-    console.log(mag.field);
-
     if (!mag.field || mag.field.includes("too-big")) return;
 
     if (divideByCategory[mag.field]) {

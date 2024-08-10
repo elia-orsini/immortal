@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Magazine from "@/types/IMagazine";
 import MagazineTitle from "./MagazineTitle";
@@ -16,7 +16,7 @@ const MagazinesList: React.FC<{ magazines: Magazine[] }> = ({ magazines }) => {
   }, [magazines]);
 
   return (
-    <section className="mx-2 sm:mx-auto">
+    <div className="w-full">
       {Object.keys(divideByCategory).map((category) => (
         <div key={category}>
           <div className="flex flex-row items-center">
@@ -34,7 +34,7 @@ const MagazinesList: React.FC<{ magazines: Magazine[] }> = ({ magazines }) => {
           ))}
         </div>
       ))}
-    </section>
+    </div>
   );
 };
 
