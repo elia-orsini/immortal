@@ -6,18 +6,12 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import sortGroupMagazines from "@/utils/sortGroupMagazines";
 
-const MagazinesList: React.FC<{ magazines: Magazine[] }> = ({ magazines }) => {
-  const [divideByCategory, setDivideByCategory] = useState<{
-    [key: string]: Magazine[];
-  }>({});
-
-  useEffect(() => {
-    setDivideByCategory(sortGroupMagazines(magazines));
-  }, [magazines]);
-
+const MagazinesList: React.FC<{
+  dividedByCategory: { [key: string]: Magazine[] };
+}> = ({ dividedByCategory }) => {
   return (
     <div className="w-full">
-      {Object.keys(divideByCategory).map((category) => (
+      {Object.keys(dividedByCategory).map((category) => (
         <div key={category}>
           <div className="flex flex-row items-center">
             <div className="relative w-5 h-5 mt-[26px]">
@@ -29,7 +23,7 @@ const MagazinesList: React.FC<{ magazines: Magazine[] }> = ({ magazines }) => {
             </p>
           </div>
 
-          {divideByCategory[category].map((magazine: Magazine) => (
+          {dividedByCategory[category].map((magazine: Magazine) => (
             <MagazineTitle key={magazine.id} magazine={magazine} />
           ))}
         </div>
