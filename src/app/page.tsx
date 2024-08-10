@@ -3,7 +3,7 @@ import MagazinesList from "@/components/MagazinesList";
 
 const dataFetcher = async (): Promise<{ magazines: any }> => {
   const magazinesData = await fetch(process.env.URL + `/api/magazines`, {
-    next: { revalidate: 10 },
+    next: { revalidate: parseInt(process.env.REVALIDATE_TIME!) },
   }).then((res) => res.json());
 
   return { magazines: magazinesData };
