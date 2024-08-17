@@ -9,13 +9,13 @@ const MagazineTitle: React.FC<{ magazine: Magazine }> = ({ magazine }) => {
     <div className="grid grid-cols-2 justify-between gap-x-20 my-0.5 text-sm sm:text-base">
       {magazine.doesHaveAPage ? (
         <Link
-          className="bg-lime-400 w-max my-auto"
+          className="bg-lime-400 w-max my-auto whitespace-nowrap"
           href={`/magazine/${convertSlugToPath(magazine.name)}`}
         >
           {magazine.name}
         </Link>
       ) : (
-        <p>{magazine.name}</p>
+        <p className="whitespace-nowrap">{magazine.name}</p>
       )}
 
       <div

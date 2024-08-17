@@ -32,9 +32,10 @@ export default async function Home() {
           <span className="font-extrabold">{filteredMags.length}</span>{" "}
           magazines total{" "}
           <span className="font-extrabold">
-            {Object.keys(dividedByCategory).length}
+            {Object.keys(dividedByCategory).length - 1}
+            {/* dont include 'other' category */}
           </span>{" "}
-          TOPICS
+          topics
         </p>
         <MagazinesList dividedByCategory={dividedByCategory} />
       </section>

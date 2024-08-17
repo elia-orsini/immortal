@@ -18,7 +18,7 @@ const AnimatedIntro: React.FC = () => {
   }, []);
 
   return (
-    <nav className="w-full h-[30vh] flex">
+    <nav className="w-full h-[20vh] flex">
       <p
         id="AnimatedLogoSVG"
         className={`${drawnFont} m-auto text-[50px] sm:text-[90px]`}
