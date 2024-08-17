@@ -1,10 +1,8 @@
 "use client";
+import Image from "next/image";
 
 import Magazine from "@/types/IMagazine";
 import MagazineTitle from "./MagazineTitle";
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import sortGroupMagazines from "@/utils/sortGroupMagazines";
 
 const MagazinesList: React.FC<{
   dividedByCategory: { [key: string]: Magazine[] };

@@ -1,4 +1,5 @@
 import AnimatedIntro from "@/components/AnimatedIntro";
+import StatsComponent from "@/components/index/StatsComponent";
 import MagazinesList from "@/components/MagazinesList";
 import Magazine from "@/types/IMagazine";
 import sortGroupMagazines from "@/utils/sortGroupMagazines";
@@ -28,15 +29,11 @@ export default async function Home() {
       <AnimatedIntro />
 
       <section className="mx-2 sm:mx-auto">
-        <p className="uppercase text-sm">
-          <span className="font-extrabold">{filteredMags.length}</span>{" "}
-          magazines total{" "}
-          <span className="font-extrabold">
-            {Object.keys(dividedByCategory).length - 1}
-            {/* dont include 'other' category */}
-          </span>{" "}
-          topics
-        </p>
+        <StatsComponent
+          filteredMags={filteredMags}
+          dividedByCategory={dividedByCategory}
+        />
+
         <MagazinesList dividedByCategory={dividedByCategory} />
       </section>
     </main>
