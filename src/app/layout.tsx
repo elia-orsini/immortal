@@ -1,6 +1,6 @@
 import Footer from "@/components/footer/Footer";
 import "./globals.css";
-import { Metadata } from "next";
+import { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -31,6 +31,12 @@ export const metadata: Metadata = {
   creator: "Elia Orsini",
   applicationName: "Immortal Mags",
   referrer: "origin-when-cross-origin",
+};
+
+export const viewport: Viewport = {
+  initialScale: 1,
+  maximumScale: 1,
+  width: "device-width",
 };
 
 export const revalidate = 360; // revalidate at most every 6 minutes
