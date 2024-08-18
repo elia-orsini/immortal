@@ -2,10 +2,7 @@ import Magazine from "@/types/IMagazine";
 
 export default function sortGroupMagazines(magazines: Magazine[]) {
   // initialise like this so that fashion/art order is always at top
-  const divideByCategory: { [key: string]: Magazine[] } = {
-    fashion: [],
-    art: [],
-  };
+  const divideByCategory: { [key: string]: Magazine[] } = {};
 
   // divide by category
   magazines.forEach((mag) => {
@@ -31,5 +28,11 @@ export default function sortGroupMagazines(magazines: Magazine[]) {
     });
   });
 
-  return divideByCategory;
+  const order = {
+    ...(divideByCategory.fashion && { fashion: divideByCategory.fashion }),
+    ...(divideByCategory.culture && { culture: divideByCategory.culture }),
+    ...divideByCategory,
+  };
+
+  return order;
 }

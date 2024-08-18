@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const MagazineTitle: React.FC<{ magazine: Magazine }> = ({ magazine }) => {
   return (
-    <div className="grid grid-cols-2 justify-between gap-x-20 my-0.5 text-sm sm:text-base">
+    <div className="grid grid-cols-2 sm:min-w-[50vw] justify-between gap-x-20 my-0.5 text-sm sm:text-base">
       {magazine.doesHaveAPage ? (
         <Link
           className="bg-lime-400 w-max my-auto whitespace-nowrap"
@@ -37,7 +37,8 @@ const MagazineTitle: React.FC<{ magazine: Magazine }> = ({ magazine }) => {
             magazine.status
           )}
         </p>
-        <p className="text-left w-full my-auto">{magazine.city}</p>
+
+        <p className="text-right w-full my-auto">{magazine.city}</p>
       </div>
     </div>
   );
