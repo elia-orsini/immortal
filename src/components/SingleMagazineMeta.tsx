@@ -14,13 +14,13 @@ const SingleMagazineMeta: React.FC<{ meta: Magazine }> = ({ meta }) => {
         )}
       </section>
 
-      <section className="w-full w-11/12 sm:w-8/12 sm:mx-auto flex flex-col sm:flex-row justify-between uppercase text-sm">
-        {meta.link && (
+      {meta.link && (
+        <section className="w-full w-11/12 sm:w-8/12 sm:mx-auto flex flex-col sm:flex-row justify-between uppercase text-sm">
           <a href={meta.link} target="_blank" className="underline">
             website
           </a>
-        )}
-      </section>
+        </section>
+      )}
     </div>
   );
 };
