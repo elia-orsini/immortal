@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     default: "Immortal Mags",
   },
   description:
-    "Immortal Mags, where magazines will never die. We aim to be the largest database/repository of independent magazines out there. Ranging from Fashion to Design, Coffee, Cycling (and many more!) we collect any (cool) magazine we encounter.",
+    "Immortal Mags, where magazines will never die. We aim to be the largest repository of independent magazines out there. Ranging from Fashion to Design, Coffee, Cycling (and many more!) we collect and document the best magazines we encounter.",
   creator: "Elia Orsini",
   applicationName: "Immortal Mags",
   referrer: "origin-when-cross-origin",
