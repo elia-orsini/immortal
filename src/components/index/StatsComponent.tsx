@@ -29,7 +29,7 @@ const StatsComponent: React.FC<{
       </p>
 
       <p className="sm:inline whitespace-normal">
-        <span className="font-extrabold">17</span> <span>countries</span>{" "}
+        <span className="font-extrabold">18</span> <span>countries</span>{" "}
       </p>
     </div>
   );

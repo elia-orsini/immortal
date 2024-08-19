@@ -9,5 +9,7 @@ export default interface Magazine {
   issuesNumber: number | string;
   doesHaveAPage: boolean;
   description: string;
+  since: string;
+  language: string[];
   link: string;
 }

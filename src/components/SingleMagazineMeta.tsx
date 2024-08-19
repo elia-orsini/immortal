@@ -9,9 +9,7 @@ const SingleMagazineMeta: React.FC<{ meta: Magazine }> = ({ meta }) => {
 
         <p>{convertIssuerAYearToText(meta.issuesPerYear.toString())}</p>
 
-        {meta.issuesNumber !== "?" && (
-          <p className="">{meta.issuesNumber} issues total</p>
-        )}
+        {meta.since && <p className="">since {meta.since}</p>}
       </section>
 
       {meta.link && (
