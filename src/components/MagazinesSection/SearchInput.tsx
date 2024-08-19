@@ -1,4 +1,11 @@
-import { Dispatch, FormEvent, SetStateAction, useRef, useState } from "react";
+import {
+  Dispatch,
+  FormEvent,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import Image from "next/image";
 
 import Magazine from "@/types/IMagazine";
@@ -10,6 +17,22 @@ const SearchInput: React.FC<{
   const [searchedKey, setSearchedKey] = useState<string>("");
 
   const inputField = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (event: any) => {
+      if ((event.ctrlKey || event.metaKey) && event.key === "f") {
+        event.preventDefault();
+
+        inputField.current?.focus();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [inputField]);
 
   function onInputChange(e: FormEvent) {
     e.preventDefault();
