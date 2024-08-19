@@ -21,18 +21,6 @@ const Footer: React.FC = () => {
 
       <div className="flex flex-col gap-y-1 sm:gap-y-1">
         <p>immortal mags © 2024</p>
-
-        <p>
-          created by{" "}
-          <a
-            className="underline"
-            target="_blank"
-            href="https://elia-orsini.com"
-          >
-            elia
-          </a>{" "}
-          with {`<3`}
-        </p>
       </div>
     </div>
   );
