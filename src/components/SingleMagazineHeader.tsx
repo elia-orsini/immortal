@@ -16,11 +16,11 @@ const SingleMagazineHeader: React.FC<{ meta: Magazine }> = ({ meta }) => {
         </div>
       </div>
 
-      <p
+      <h1
         className={`m-auto z-10 bg-black text-white text-4xl px-2 ${drawnFont}`}
       >
         {meta.name}
-      </p>
+      </h1>
     </section>
   );
 };

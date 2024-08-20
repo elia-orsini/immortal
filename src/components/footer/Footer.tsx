@@ -3,7 +3,7 @@ const Footer: React.FC = () => {
     <div className="flex flex-col gap-y-6 sm:gap-y-6 justify-between mx-2 sm:mx-10 mb-10 text-xs">
       <div className="flex flex-col gap-y-1 sm:gap-y-1">
         <p>
-          immortal mags is aiming to be the biggest online repository of
+          immortal mags aims to be the largest online repository of
           independent magazines.
         </p>
 

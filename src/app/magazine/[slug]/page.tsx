@@ -9,6 +9,8 @@ import SingleMagazineHeader from "@/components/SingleMagazineHeader";
 import SingleMagazineMeta from "@/components/SingleMagazineMeta";
 import convertPathToSlug from "@/utils/convertPathToSlug";
 import Magazine from "@/types/IMagazine";
+import capitalizeString from "@/utils/capitalizeString";
+import convertIssuerAYearToText from "@/utils/convertIssuerAYearToText";
 
 const dataFetcher = async (slug: string): Promise<any> => {
   const magazinesData = await fetch(process.env.URL + `/api/magazines`, {
@@ -42,7 +44,6 @@ const SingleMagazine: NextPage<{ params: any }> = async ({ params }) => {
     <main className="flex min-h-screen w-screen flex-col mb-20">
       <nav className="w-full h-10 border-b border-black px-2 sm:px-10 flex">
         <Link href="/" className={`my-auto ${drawnFont}`}>
-          {" "}
           immortal mags
         </Link>
       </nav>
@@ -72,8 +73,14 @@ export async function generateMetadata(
 
   const description = magazineMeta.description || (await parent).description;
 
+  const capitalizedField = capitalizeString(`${magazineMeta.field}`);
+  const capitalizedCity = capitalizeString(`${magazineMeta.city}`);
+  const capitalizedFrequency = capitalizeString(
+    convertIssuerAYearToText(`${magazineMeta.issuesPerYear}`)
+  );
+
   return {
-    title: magazineMeta.name,
+    title: `${magazineMeta.name}, A ${capitalizedFrequency} ${capitalizedField} Magazine based in ${capitalizedCity}`,
     description: description,
     openGraph: {
       images: [`${magazineMeta.imageCover[0].url}`, ...previousImages],
