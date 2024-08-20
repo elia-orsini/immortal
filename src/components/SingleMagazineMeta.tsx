@@ -22,9 +22,9 @@ const SingleMagazineMeta: React.FC<{ meta: Magazine }> = ({ meta }) => {
 
           {meta.language && (
             <p>
-              bilingual {"("}
+              {meta.language.length === 2 && `bilingual (`}
               {meta.language.join(", ")}
-              {")"}
+              {meta.language.length === 2 && `)`}
             </p>
           )}
         </div>
