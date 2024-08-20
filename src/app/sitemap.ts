@@ -1,6 +1,7 @@
-import Magazine from "@/types/IMagazine";
-import convertSlugToPath from "@/utils/convertSlugToPath";
 import { MetadataRoute } from "next";
+
+import Magazine from "@/types/IMagazine";
+import convertTitleToSlug from "@/utils/convertTitleToSlug";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const magazinesData = await fetch(process.env.URL + `/api/magazines`, {
@@ -12,7 +13,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   magazinesData.map((mag: Magazine) => {
     if (mag.doesHaveAPage) {
       const sitemapEntry = {
-        url: `https://immortal-mags.xyz/magazine/${convertSlugToPath(
+        url: `https://immortal-mags.xyz/magazine/${convertTitleToSlug(
           mag.name
         )}`,
         lastModified: new Date(),

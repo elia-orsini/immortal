@@ -7,10 +7,10 @@ import { NotionRenderer } from "react-notion";
 import drawnFont from "@/utils/drawnFont";
 import SingleMagazineHeader from "@/components/SingleMagazineHeader";
 import SingleMagazineMeta from "@/components/SingleMagazineMeta";
-import convertPathToSlug from "@/utils/convertPathToSlug";
 import Magazine from "@/types/IMagazine";
 import capitalizeString from "@/utils/capitalizeString";
 import convertIssuerAYearToText from "@/utils/convertIssuerAYearToText";
+import convertTitleToSlug from "@/utils/convertTitleToSlug";
 
 const dataFetcher = async (slug: string): Promise<any> => {
   const magazinesData = await fetch(process.env.URL + `/api/magazines`, {
@@ -18,7 +18,7 @@ const dataFetcher = async (slug: string): Promise<any> => {
   }).then((res) => res.json());
 
   const match = magazinesData.find(
-    (mag: Magazine) => mag.name.toLowerCase() === convertPathToSlug(slug)
+    (mag: Magazine) => convertTitleToSlug(mag.name) === slug
   );
 
   const path = match.id;

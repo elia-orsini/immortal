@@ -1,5 +1,6 @@
 import Magazine from "@/types/IMagazine";
-import convertSlugToPath from "@/utils/convertSlugToPath";
+import convertTitleToSlug from "@/utils/convertTitleToSlug";
+
 import drawnFont from "@/utils/drawnFont";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,7 +11,7 @@ const MagazineTitle: React.FC<{ magazine: Magazine }> = ({ magazine }) => {
       {magazine.doesHaveAPage ? (
         <Link
           className="bg-lime-400 w-max my-auto whitespace-nowrap"
-          href={`/magazine/${convertSlugToPath(magazine.name)}`}
+          href={`/magazine/${convertTitleToSlug(magazine.name)}`}
         >
           {magazine.name}
         </Link>
