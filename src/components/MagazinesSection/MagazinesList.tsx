@@ -13,7 +13,11 @@ const MagazinesList: React.FC<{
         <div key={category}>
           <div className="flex flex-row items-center">
             <div className="relative w-5 h-5 mb-[13px]">
-              <Image alt="Star Icon" fill src="/star.png" />
+              <Image
+                alt={`star icon, ${category} magazines section`}
+                fill
+                src="/star.png"
+              />
             </div>
 
             <h2 className="ml-1 font-bold text-lg uppercase mb-3">

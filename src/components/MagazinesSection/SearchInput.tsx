@@ -58,7 +58,7 @@ const SearchInput: React.FC<{
       />
       <button onClick={() => inputField.current?.focus()}>
         <Image
-          alt="Search Icon"
+          alt="search icon, filter our repository of magazines from around the world"
           src="search-icon.svg"
           width={16}
           height={16}
