@@ -1,7 +1,3 @@
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import TextPlugin from "gsap/TextPlugin";
-
 import drawnFont from "@/utils/drawnFont";
 import Magazine from "@/types/IMagazine";
 import Image from "next/image";
@@ -13,7 +9,7 @@ const SingleMagazineHeader: React.FC<{ meta: Magazine }> = ({ meta }) => {
         <div className="relative w-full h-full border-b border-black">
           <Image
             src={meta.imageCover[0].url}
-            alt={`${meta.name} Cover Image`}
+            alt={`${meta.name}, Cover Image, Magazine Cover, Magazine based in ${meta.city}, Immortal Mags`}
             className="object-cover"
             fill
           />
