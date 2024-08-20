@@ -3,7 +3,7 @@ import convertIssuerAYearToText from "@/utils/convertIssuerAYearToText";
 
 const SingleMagazineMeta: React.FC<{ meta: Magazine }> = ({ meta }) => {
   return (
-    <div className="flex flex-col m-4 sm:gap-y-2">
+    <section className="flex flex-col m-4 sm:gap-y-2">
       <div className="w-full w-11/12 sm:w-8/12 sm:mx-auto flex flex-col sm:flex-row justify-between uppercase text-sm">
         {meta.city !== "-" && <p className="">based in {meta.city}</p>}
 
@@ -29,7 +29,7 @@ const SingleMagazineMeta: React.FC<{ meta: Magazine }> = ({ meta }) => {
           )}
         </div>
       )}
-    </div>
+    </section>
   );
 };
 

@@ -16,7 +16,9 @@ const MagazinesList: React.FC<{
               <Image alt="Star Icon" fill src="/star.png" />
             </div>
 
-            <p className="ml-1 font-bold text-lg uppercase mb-3">{category}</p>
+            <h2 className="ml-1 font-bold text-lg uppercase mb-3">
+              {category}
+            </h2>
           </div>
 
           {dividedByCategory[category].map((magazine: Magazine) => (

@@ -12,7 +12,7 @@ const StatsComponent: React.FC<{
   const numOfTopics = Object.keys(dividedByCategory).length - 1; // dont include 'other' category
 
   return (
-    <div className="uppercase text-xs sm:text-sm w-full mt-2 sm:space-x-3">
+    <section className="uppercase text-xs sm:text-sm w-full mt-2 sm:space-x-3">
       <p className="sm:inline whitespace-normal">
         <span className="font-extrabold">{filteredMags.length}</span>{" "}
         <span>magazines</span>{" "}
@@ -31,7 +31,7 @@ const StatsComponent: React.FC<{
       <p className="sm:inline whitespace-normal">
         <span className="font-extrabold">18</span> <span>countries</span>{" "}
       </p>
-    </div>
+    </section>
   );
 };
 

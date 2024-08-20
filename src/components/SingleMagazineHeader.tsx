@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const SingleMagazineHeader: React.FC<{ meta: Magazine }> = ({ meta }) => {
   return (
-    <section className="w-full h-[30vh] flex">
+    <header className="w-full h-[30vh] flex">
       <div className="absolute w-full h-[30vh]">
         <div className="relative w-full h-full border-b border-black">
           <Image
@@ -21,7 +21,7 @@ const SingleMagazineHeader: React.FC<{ meta: Magazine }> = ({ meta }) => {
       >
         {meta.name}
       </h1>
-    </section>
+    </header>
   );
 };
 
