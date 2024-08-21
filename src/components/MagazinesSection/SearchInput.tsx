@@ -47,22 +47,22 @@ const SearchInput: React.FC<{
   }
 
   return (
-    <div className="flex">
+    <div className="flex xl:ml-auto ">
       <input
         ref={inputField}
         onChange={(e) => onInputChange(e)}
         value={searchedKey}
         type="text"
-        className="focus:outline-none sm:ml-auto sm:mb-0.5 w-[110px] placeholder:text-sm text-sm"
+        className="focus:outline-none w-[110px] placeholder:text-sm text-sm"
         placeholder="Type to search ..."
       />
-      <button onClick={() => inputField.current?.focus()}>
+      <button className="w-3" onClick={() => inputField.current?.focus()}>
         <Image
           alt="search icon, filter our repository of magazines from around the world"
           src="search-icon.svg"
           width={16}
           height={16}
-          className="inline mb-1 ml-2"
+          className="inline mb-1 ml-"
         />
       </button>
     </div>

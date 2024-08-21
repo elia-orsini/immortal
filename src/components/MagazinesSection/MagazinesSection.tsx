@@ -13,7 +13,7 @@ const MagazinesSection: React.FC<{
 
   return (
     <div className="w-full flex flex-col">
-      <div className="flex flex-col sm:flex-row mb-8 gap-y-3">
+      <div className="flex flex-col xl:flex-row mb-8 gap-y-2">
         <StatsComponent filteredMags={filteredMags} />
 
         <SearchInput
@@ -23,6 +23,10 @@ const MagazinesSection: React.FC<{
       </div>
 
       <MagazinesList dividedByCategory={sortGroupMagazines(searchedMags)} />
+
+      {!searchedMags.length && (
+        <p className="sm:min-w-[50vw] text-sm">no results found</p>
+      )}
     </div>
   );
 };
