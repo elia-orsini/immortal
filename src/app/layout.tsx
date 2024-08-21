@@ -24,10 +24,10 @@ export default function RootLayout({
 export const metadata: Metadata = {
   title: {
     template: "%s | Immortal Mags",
-    default: "Immortal Mags",
+    default: "Immortal Mags | Where magazines will never die. The largest online repository of independent magazines.",
   },
   description:
-    "Immortal Mags, where magazines will never die. We aim to be the largest repository of independent magazines. Ranging from Fashion to Design, Coffee, Cycling (and many more!) we collect and document the best magazines we encounter.",
+    "Immortal Mags, where magazines will never die. We aim to be the largest online repository of independent magazines. Ranging from Fashion to Design, Coffee, Cycling (and many more!) we collect and document the best magazines we encounter.",
   creator: "Elia Orsini",
   applicationName: "Immortal Mags",
   referrer: "origin-when-cross-origin",
