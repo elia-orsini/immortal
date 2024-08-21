@@ -1,9 +1,6 @@
 import AnimatedIntro from "@/components/AnimatedIntro";
-import MagazinesList from "@/components/MagazinesSection/MagazinesList";
 import MagazinesSection from "@/components/MagazinesSection/MagazinesSection";
-import StatsComponent from "@/components/index/StatsComponent";
 import Magazine from "@/types/IMagazine";
-import sortGroupMagazines from "@/utils/sortGroupMagazines";
 
 const dataFetcher = async (): Promise<{
   filteredMags: Magazine[];
@@ -27,8 +24,6 @@ export default async function Home() {
       <AnimatedIntro />
 
       <section className="mx-2 sm:mx-auto">
-        <StatsComponent filteredMags={filteredMags} />
-
         <MagazinesSection filteredMags={filteredMags} />
       </section>
     </main>

@@ -1,10 +1,10 @@
 "use client";
 import Magazine from "@/types/IMagazine";
 import MagazinesList from "./MagazinesList";
-import { FormEvent, useRef, useState } from "react";
+import { useState } from "react";
 import sortGroupMagazines from "@/utils/sortGroupMagazines";
-import Image from "next/image";
 import SearchInput from "./SearchInput";
+import StatsComponent from "../index/StatsComponent";
 
 const MagazinesSection: React.FC<{
   filteredMags: Magazine[];
@@ -13,10 +13,14 @@ const MagazinesSection: React.FC<{
 
   return (
     <div className="w-full flex flex-col">
-      <SearchInput
-        filteredMags={filteredMags}
-        setSearchedMags={setSearchedMags}
-      />
+      <div className="flex flex-col sm:flex-row mb-8 gap-y-3">
+        <StatsComponent filteredMags={filteredMags} />
+
+        <SearchInput
+          filteredMags={filteredMags}
+          setSearchedMags={setSearchedMags}
+        />
+      </div>
 
       <MagazinesList dividedByCategory={sortGroupMagazines(searchedMags)} />
     </div>

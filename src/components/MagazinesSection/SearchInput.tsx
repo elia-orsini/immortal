@@ -53,7 +53,7 @@ const SearchInput: React.FC<{
         onChange={(e) => onInputChange(e)}
         value={searchedKey}
         type="text"
-        className="focus:outline-none sm:ml-auto my-4 w-[110px] placeholder:text-sm text-sm"
+        className="focus:outline-none sm:ml-auto sm:mb-0.5 w-[110px] placeholder:text-sm text-sm"
         placeholder="Type to search ..."
       />
       <button onClick={() => inputField.current?.focus()}>
