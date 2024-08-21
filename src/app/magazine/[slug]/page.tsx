@@ -2,6 +2,7 @@ import "react-notion/src/styles.css";
 import "prismjs/themes/prism-tomorrow.css";
 import { Metadata, NextPage, ResolvingMetadata } from "next";
 import Link from "next/link";
+import { Periodical, WithContext } from "schema-dts";
 import { NotionRenderer } from "react-notion";
 
 import drawnFont from "@/utils/drawnFont";
@@ -12,7 +13,9 @@ import capitalizeString from "@/utils/capitalizeString";
 import convertIssuerAYearToText from "@/utils/convertIssuerAYearToText";
 import convertTitleToSlug from "@/utils/convertTitleToSlug";
 
-const dataFetcher = async (slug: string): Promise<any> => {
+const dataFetcher = async (
+  slug: string
+): Promise<{ magazineData: any; magazineMeta: Magazine }> => {
   const magazinesData = await fetch(process.env.URL + `/api/magazines`, {
     next: { revalidate: parseInt(process.env.REVALIDATE_TIME!) },
   }).then((res) => res.json());
@@ -40,6 +43,19 @@ const dataFetcher = async (slug: string): Promise<any> => {
 const SingleMagazine: NextPage<{ params: any }> = async ({ params }) => {
   const { magazineData, magazineMeta } = await dataFetcher(params.slug);
 
+  const jsonLd: WithContext<Periodical> = {
+    "@context": "https://schema.org",
+    "@type": "Periodical",
+    name: magazineMeta.name,
+    image: magazineMeta.imageCover[0].rawUrl,
+    thumbnailUrl: magazineMeta.imageCover[0].rawUrl,
+    description: magazineMeta.description,
+    genre: magazineMeta.field[0],
+    keywords: `Magazine, ${magazineMeta.name}, ${magazineMeta.city}, ${magazineMeta.field} Magazine`,
+    url: magazineMeta.link,
+    inLanguage: magazineMeta.language?.join(", ").toLowerCase() || "English",
+  };
+
   return (
     <main className="flex min-h-screen w-screen flex-col mb-20">
       <nav className="w-full h-10 border-b border-black px-2 sm:px-10 flex">
@@ -55,6 +71,11 @@ const SingleMagazine: NextPage<{ params: any }> = async ({ params }) => {
       <hr className="border-black mb-4" />
 
       <article className="mx-auto w-11/12 sm:w-8/12">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+
         <NotionRenderer blockMap={magazineData} />
       </article>
     </main>
