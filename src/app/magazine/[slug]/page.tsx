@@ -6,16 +6,21 @@ import { Periodical, WithContext } from "schema-dts";
 import { NotionRenderer } from "react-notion";
 
 import drawnFont from "@/utils/drawnFont";
-import SingleMagazineHeader from "@/components/SingleMagazineHeader";
-import SingleMagazineMeta from "@/components/SingleMagazineMeta";
+import SingleMagazineHeader from "@/components/SingleMagazine/SingleMagazineHeader";
+import SingleMagazineMeta from "@/components/SingleMagazine/SingleMagazineMeta";
 import Magazine from "@/types/IMagazine";
 import capitalizeString from "@/utils/capitalizeString";
 import convertIssuerAYearToText from "@/utils/convertIssuerAYearToText";
 import convertTitleToSlug from "@/utils/convertTitleToSlug";
+import RecomendationsSection from "@/components/SingleMagazine/ReccomendationsSection";
 
 const dataFetcher = async (
   slug: string
-): Promise<{ magazineData: any; magazineMeta: Magazine }> => {
+): Promise<{
+  allMags: Magazine[];
+  magazineData: any;
+  magazineMeta: Magazine;
+}> => {
   const magazinesData = await fetch(process.env.URL + `/api/magazines`, {
     next: { revalidate: parseInt(process.env.REVALIDATE_TIME!) },
   }).then((res) => res.json());
@@ -37,11 +42,13 @@ const dataFetcher = async (
     next: { revalidate: parseInt(process.env.REVALIDATE_TIME!) },
   }).then((res) => res.json());
 
-  return { magazineData, magazineMeta };
+  return { allMags: magazinesData, magazineData, magazineMeta };
 };
 
 const SingleMagazine: NextPage<{ params: any }> = async ({ params }) => {
-  const { magazineData, magazineMeta } = await dataFetcher(params.slug);
+  const { allMags, magazineData, magazineMeta } = await dataFetcher(
+    params.slug
+  );
 
   const jsonLd: WithContext<Periodical> = {
     "@context": "https://schema.org",
@@ -78,6 +85,8 @@ const SingleMagazine: NextPage<{ params: any }> = async ({ params }) => {
 
         <NotionRenderer blockMap={magazineData} />
       </article>
+
+      <RecomendationsSection allMags={allMags} magMetadata={magazineMeta} />
     </main>
   );
 };
