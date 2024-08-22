@@ -44,7 +44,7 @@ const StatsComponent: React.FC<{
       </p>
 
       <p className="sm:inline whitespace-normal">
-        <span className="animatedNumber font-extrabold">20</span>{" "}
+        <span className="animatedNumber font-extrabold">21</span>{" "}
         <span>countries</span>{" "}
       </p>
     </section>
