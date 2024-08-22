@@ -13,6 +13,7 @@ import capitalizeString from "@/utils/capitalizeString";
 import convertIssuerAYearToText from "@/utils/convertIssuerAYearToText";
 import convertTitleToSlug from "@/utils/convertTitleToSlug";
 import RecomendationsSection from "@/components/SingleMagazine/ReccomendationsSection";
+import getRightArticle from "@/utils/getRightArticle";
 
 const dataFetcher = async (
   slug: string
@@ -108,9 +109,10 @@ export async function generateMetadata(
   const capitalizedFrequency = capitalizeString(
     convertIssuerAYearToText(`${magazineMeta.issuesPerYear}`)
   );
+  const initialArticle = getRightArticle(capitalizedFrequency);
 
   return {
-    title: `${magazineMeta.name}, A ${capitalizedFrequency} ${capitalizedField} Magazine based in ${capitalizedCity}`,
+    title: `${magazineMeta.name}, ${initialArticle} ${capitalizedFrequency} ${capitalizedField} Magazine based in ${capitalizedCity}`,
     description: description,
     openGraph: {
       images: [`${magazineMeta.imageCover[0].url}`, ...previousImages],
