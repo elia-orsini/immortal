@@ -12,7 +12,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} cursor-crosshair`}>
         {children}
 
         <Footer />
@@ -24,7 +24,8 @@ export default function RootLayout({
 export const metadata: Metadata = {
   title: {
     template: "%s | Immortal Mags",
-    default: "Immortal Mags | Where magazines will never die. The largest online repository of independent magazines.",
+    default:
+      "Immortal Mags | Where magazines will never die. The largest online repository of independent magazines.",
   },
   description:
     "Immortal Mags, where magazines will never die. We aim to be the largest online repository of independent magazines. Ranging from Fashion to Design, Coffee, Cycling (and many more!) we collect and document the best magazines we encounter.",

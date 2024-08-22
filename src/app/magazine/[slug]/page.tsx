@@ -67,7 +67,7 @@ const SingleMagazine: NextPage<{ params: any }> = async ({ params }) => {
   return (
     <main className="flex min-h-screen w-screen flex-col mb-20">
       <nav className="w-full h-10 border-b border-black px-2 sm:px-10 flex">
-        <Link href="/" className={`my-auto ${drawnFont}`}>
+        <Link href="/" className={`my-auto ${drawnFont} cursor-cell`}>
           immortal mags
         </Link>
       </nav>
