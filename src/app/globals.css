@@ -9,3 +9,8 @@
 .notion-row {
   flex-direction: row !important;
 }
+
+::selection {
+  background: black;
+  color: white;
+}
