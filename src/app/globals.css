@@ -14,3 +14,7 @@
   background: black;
   color: white;
 }
+
+.notion-asset-wrapper {
+  width: 100% !important;
+}
