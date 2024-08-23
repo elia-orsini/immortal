@@ -39,7 +39,7 @@ export default async function Home() {
       </main>
 
       <section className="mb-6">
-        <p className="text-xs sm:mx-10">
+        <p className="text-xs sm:mx-10 mx-2">
           undecided? bored? feeling bold? discover a{" "}
           <Link
             className="underline"
