@@ -27,7 +27,7 @@ const MagazineTitle: React.FC<{ magazine: Magazine }> = ({ magazine }) => {
             <>
               <Image
                 src="/skull.svg"
-                alt={`skull icon, ${magazine.name} is a dead ${magazine.field} magazine`}
+                alt={`Immortal Skull Icon`}
                 className="-ml-2 -mr-1 inline"
                 width={24}
                 height={20}
