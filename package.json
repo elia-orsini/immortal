@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@eliaorsini/react-notion": "^0.11.0",
+    "@eliaorsini/react-notion": "^0.12.0",
     "@gsap/react": "^2.1.1",
     "gsap": "^3.12.5",
     "next": "14.2.4",
