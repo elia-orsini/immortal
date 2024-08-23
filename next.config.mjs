@@ -17,6 +17,19 @@ const nextConfig = {
       },
     ],
   },
+  /**
+   * Description
+   * @author elia
+   * @description proxy the google analytics script to a url on our site to avoid adblockers' detection.
+   */
+  async rewrites() {
+    return [
+      {
+        source: "/adblockerbypass",
+        destination: `https://www.google-analytics.com/g/collect`,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
