@@ -9,12 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@eliaorsini/react-notion": "^0.11.0",
     "@gsap/react": "^2.1.1",
     "gsap": "^3.12.5",
     "next": "14.2.4",
     "react": "^18",
     "react-dom": "^18",
-    "react-notion": "^0.10.0",
     "schema-dts": "^1.1.2"
   },
   "devDependencies": {

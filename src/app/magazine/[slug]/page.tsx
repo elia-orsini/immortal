@@ -1,9 +1,9 @@
-import "react-notion/src/styles.css";
+import "@eliaorsini/react-notion/src/styles.css";
 import "prismjs/themes/prism-tomorrow.css";
 import { Metadata, NextPage, ResolvingMetadata } from "next";
 import Link from "next/link";
 import { Periodical, WithContext } from "schema-dts";
-import { NotionRenderer } from "react-notion";
+import { NotionRenderer } from "@eliaorsini/react-notion";
 
 import drawnFont from "@/utils/drawnFont";
 import SingleMagazineHeader from "@/components/SingleMagazine/SingleMagazineHeader";
