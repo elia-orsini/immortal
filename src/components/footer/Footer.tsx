@@ -5,7 +5,7 @@ const Footer: React.FC = () => {
         <p>
           say hi or submit a mag, send us an{" "}
           <a
-            className="underline cursor-cell"
+            className="underline"
             target="_blank"
             href="mailto:elia.orsini@hotmail.com"
           >

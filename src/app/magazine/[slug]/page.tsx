@@ -14,6 +14,8 @@ import convertIssuerAYearToText from "@/utils/convertIssuerAYearToText";
 import convertTitleToSlug from "@/utils/convertTitleToSlug";
 import RecomendationsSection from "@/components/SingleMagazine/ReccomendationsSection";
 import getRightArticle from "@/utils/getRightArticle";
+import { notFound } from "next/navigation";
+import SmallNav from "@/components/SmallNav";
 
 const dataFetcher = async (
   slug: string
@@ -30,6 +32,8 @@ const dataFetcher = async (
     (mag: Magazine) => convertTitleToSlug(mag.name) === slug
   );
 
+  if (!match) notFound();
+
   const path = match.id;
 
   const magazineData = await fetch(
@@ -42,6 +46,8 @@ const dataFetcher = async (
   const magazineMeta = await fetch(process.env.URL + `/api/magazine/${path}`, {
     next: { revalidate: parseInt(process.env.REVALIDATE_TIME!) },
   }).then((res) => res.json());
+
+  if (!magazineMeta.doesHaveAPage) notFound();
 
   return { allMags: magazinesData, magazineData, magazineMeta };
 };
@@ -66,11 +72,7 @@ const SingleMagazine: NextPage<{ params: any }> = async ({ params }) => {
 
   return (
     <main className="flex min-h-screen w-screen flex-col mb-10">
-      <nav className="w-full h-10 border-b border-black px-2 sm:px-10 flex">
-        <Link href="/" className={`my-auto ${drawnFont} cursor-cell`}>
-          immortal mags
-        </Link>
-      </nav>
+      <SmallNav />
 
       <SingleMagazineHeader meta={magazineMeta} />
 

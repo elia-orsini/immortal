@@ -10,7 +10,7 @@ const MagazineTitle: React.FC<{ magazine: Magazine }> = ({ magazine }) => {
     <div className="grid grid-cols-2 sm:min-w-[50vw] justify-between gap-x-20 my-0.5 text-sm sm:text-base">
       {magazine.doesHaveAPage ? (
         <Link
-          className="bg-lime-400 w-max my-auto whitespace-nowrap cursor-cell"
+          className="bg-lime-400 w-max my-auto whitespace-nowrap"
           href={`/magazine/${convertTitleToSlug(magazine.name)}`}
         >
           {magazine.name}

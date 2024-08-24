@@ -15,7 +15,7 @@ const SingleMagazineMeta: React.FC<{ meta: Magazine }> = ({ meta }) => {
       {(meta.link || meta.language) && (
         <div className="w-full w-11/12 sm:w-8/12 sm:mx-auto flex flex-col sm:flex-row justify-between uppercase text-sm">
           {meta.link && (
-            <a href={meta.link} target="_blank" className="underline cursor-cell">
+            <a href={meta.link} target="_blank" className="underline">
               website
             </a>
           )}
