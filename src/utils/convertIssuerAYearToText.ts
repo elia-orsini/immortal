@@ -4,6 +4,8 @@ export default function convertIssuerAYearToText(issueAYear: string): string {
       return "annual";
     case "2":
       return "biannual";
+    case "3":
+      return "triannual";
     case "4":
       return "quarterly";
     case "6":
