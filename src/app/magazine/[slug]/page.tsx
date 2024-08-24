@@ -55,8 +55,8 @@ const SingleMagazine: NextPage<{ params: any }> = async ({ params }) => {
     "@context": "https://schema.org",
     "@type": "Periodical",
     name: magazineMeta.name,
-    image: magazineMeta.imageCover[0].rawUrl,
-    thumbnailUrl: magazineMeta.imageCover[0].rawUrl,
+    image: magazineMeta.imageCover && magazineMeta.imageCover[0].rawUrl,
+    thumbnailUrl: magazineMeta.imageCover && magazineMeta.imageCover[0].rawUrl,
     description: magazineMeta.description,
     genre: magazineMeta.field[0],
     keywords: `Magazine, ${magazineMeta.name}, ${magazineMeta.city}, ${magazineMeta.field} Magazine`,
@@ -111,11 +111,15 @@ export async function generateMetadata(
   );
   const initialArticle = getRightArticle(capitalizedFrequency);
 
+  const imageCover = magazineMeta.imageCover
+    ? [`${magazineMeta.imageCover[0].url}`, ...previousImages]
+    : [...previousImages];
+
   return {
     title: `${magazineMeta.name}, ${initialArticle} ${capitalizedFrequency} ${capitalizedField} Magazine based in ${capitalizedCity}`,
     description: description,
     openGraph: {
-      images: [`${magazineMeta.imageCover[0].url}`, ...previousImages],
+      images: imageCover,
     },
   };
 }

@@ -6,8 +6,6 @@ const RecomendationsSection: React.FC<{
   allMags: Magazine[];
   magMetadata: Magazine;
 }> = ({ allMags, magMetadata }) => {
-  const field = magMetadata.field;
-
   const sameField = allMags.filter(
     (mag) =>
       mag.field[0] === magMetadata.field[0] &&
@@ -29,7 +27,10 @@ const RecomendationsSection: React.FC<{
         <div className="mt-3">
           {slicedReccs.map((recc) => (
             <div key={recc.id} className="my-1">
-              <Link className="cursor-cell" href={`/magazine/${convertTitleToSlug(recc.name)}`}>
+              <Link
+                className="cursor-cell"
+                href={`/magazine/${convertTitleToSlug(recc.name)}`}
+              >
                 <p className="bg-black text-white px-1">{recc.name}</p>
               </Link>
               <p className="text-sm ml-5">{recc.description}</p>

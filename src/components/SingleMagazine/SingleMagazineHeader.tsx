@@ -7,12 +7,14 @@ const SingleMagazineHeader: React.FC<{ meta: Magazine }> = ({ meta }) => {
     <header className="w-full h-[30vh] flex">
       <div className="absolute w-full h-[30vh]">
         <div className="relative w-full h-full border-b border-black">
-          <Image
-            src={meta.imageCover[0].url}
-            alt={`${meta.name}, a ${meta.field} magazine based in ${meta.city}, ${meta.name} magazine cover image`}
-            className="object-cover"
-            fill
-          />
+          {meta.imageCover && (
+            <Image
+              src={meta.imageCover[0].url}
+              alt={`${meta.name}, a ${meta.field} magazine based in ${meta.city}, ${meta.name} magazine cover image`}
+              className="object-cover"
+              fill
+            />
+          )}
         </div>
       </div>
 
