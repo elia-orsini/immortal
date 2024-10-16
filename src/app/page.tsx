@@ -8,9 +8,9 @@ const dataFetcher = async (): Promise<{
   filteredMags: Magazine[];
   magazinesData: Magazine[];
 }> => {
-  const magazinesData = await fetch(process.env.URL + `/api/magazines`, {
-    next: { revalidate: parseInt(process.env.REVALIDATE_TIME!) },
-  }).then((res) => res.json());
+  const magazinesData = await fetch(process.env.URL + `/api/magazines`).then(
+    (res) => res.json()
+  );
 
   const filteredMags = magazinesData.filter(
     (mag: Magazine) => !mag.field.includes("too-big")

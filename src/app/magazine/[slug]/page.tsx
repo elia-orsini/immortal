@@ -22,9 +22,9 @@ const dataFetcher = async (
   magazineData: any;
   magazineMeta: Magazine;
 }> => {
-  const magazinesData = await fetch(process.env.URL + `/api/magazines`, {
-    next: { revalidate: parseInt(process.env.REVALIDATE_TIME!) },
-  }).then((res) => res.json());
+  const magazinesData = await fetch(process.env.URL + `/api/magazines`).then(
+    (res) => res.json()
+  );
 
   const match = magazinesData.find(
     (mag: Magazine) => convertTitleToSlug(mag.name) === slug
@@ -35,15 +35,12 @@ const dataFetcher = async (
   const path = match.id;
 
   const magazineData = await fetch(
-    process.env.URL + `/api/magazineData/${path}`,
-    {
-      next: { revalidate: parseInt(process.env.REVALIDATE_TIME!) },
-    }
+    process.env.URL + `/api/magazineData/${path}`
   ).then((res) => res.json());
 
-  const magazineMeta = await fetch(process.env.URL + `/api/magazine/${path}`, {
-    next: { revalidate: parseInt(process.env.REVALIDATE_TIME!) },
-  }).then((res) => res.json());
+  const magazineMeta = await fetch(
+    process.env.URL + `/api/magazine/${path}`
+  ).then((res) => res.json());
 
   if (!magazineMeta.doesHaveAPage) notFound();
 
