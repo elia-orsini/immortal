@@ -26,9 +26,9 @@ const RecomendationsSection: React.FC<{
 
         <div className="mt-3">
           {slicedReccs.map((recc) => (
-            <div key={recc.id} className="my-1">
+            <div key={recc.id} className="my-2">
               <Link href={`/magazine/${convertTitleToSlug(recc.name)}`}>
-                <p className="font-bold px-1">{recc.name}</p>
+                <p className="font-bold px-1 underline text-sm">{recc.name}</p>
               </Link>
               <p className="text-sm ml-5 opacity-70">{recc.description}</p>
             </div>

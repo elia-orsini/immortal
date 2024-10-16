@@ -1,11 +1,10 @@
 import "@eliaorsini/react-notion/src/styles.css";
 import "prismjs/themes/prism-tomorrow.css";
 import { Metadata, NextPage, ResolvingMetadata } from "next";
-import Link from "next/link";
 import { Periodical, WithContext } from "schema-dts";
 import { NotionRenderer } from "@eliaorsini/react-notion";
+import { notFound } from "next/navigation";
 
-import drawnFont from "@/utils/drawnFont";
 import SingleMagazineHeader from "@/components/SingleMagazine/SingleMagazineHeader";
 import SingleMagazineMeta from "@/components/SingleMagazine/SingleMagazineMeta";
 import Magazine from "@/types/IMagazine";
@@ -14,7 +13,6 @@ import convertIssuerAYearToText from "@/utils/convertIssuerAYearToText";
 import convertTitleToSlug from "@/utils/convertTitleToSlug";
 import RecomendationsSection from "@/components/SingleMagazine/ReccomendationsSection";
 import getRightArticle from "@/utils/getRightArticle";
-import { notFound } from "next/navigation";
 import SmallNav from "@/components/SmallNav";
 
 const dataFetcher = async (
