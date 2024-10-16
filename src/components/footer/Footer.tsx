@@ -1,6 +1,6 @@
 const Footer: React.FC = () => {
   return (
-    <div className="flex flex-col gap-y-6 justify-between mx-2 sm:mx-10 mb-10 text-xs">
+    <div className="flex flex-col gap-y-3 justify-between mx-2 sm:mx-10 mb-10 text-xs">
       <div className="flex flex-col gap-y-6">
         <p>
           say hi or submit a mag, send us an{" "}
