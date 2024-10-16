@@ -22,15 +22,15 @@ const RecomendationsSection: React.FC<{
       <hr className="w-11/12 sm:w-8/12 border-black mx-auto mt-10" />
 
       <section className="w-11/12 sm:w-8/12 mx-auto mt-10">
-        <p className="uppercase text-sm">you might also like:</p>
+        <p className="uppercase text-sm opacity-70">you might also like:</p>
 
         <div className="mt-3">
           {slicedReccs.map((recc) => (
             <div key={recc.id} className="my-1">
               <Link href={`/magazine/${convertTitleToSlug(recc.name)}`}>
-                <p className="bg-black text-white px-1">{recc.name}</p>
+                <p className="font-bold px-1">{recc.name}</p>
               </Link>
-              <p className="text-sm ml-5">{recc.description}</p>
+              <p className="text-sm ml-5 opacity-70">{recc.description}</p>
             </div>
           ))}
         </div>
