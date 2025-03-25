@@ -55,4 +55,4 @@ export const viewport: Viewport = {
   width: "device-width",
 };
 
-export const revalidate = 1200; // revalidate at most every 20 minutes
+export const revalidate = 7200; // revalidate at most every 2 hours
