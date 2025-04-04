@@ -120,3 +120,13 @@ export async function generateMetadata(
     },
   };
 }
+
+export async function generateStaticParams() {
+  const magazinesData = await fetch(process.env.URL + `/api/magazines`).then(
+    (res) => res.json()
+  );
+
+  return magazinesData.map((mag: Magazine) => ({
+    slug: convertTitleToSlug(mag.name),
+  }));
+}
