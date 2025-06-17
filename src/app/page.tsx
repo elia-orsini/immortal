@@ -8,7 +8,7 @@ const dataFetcher = async (): Promise<{
   filteredMags: Magazine[];
   magazinesData: Magazine[];
 }> => {
-  const magazinesData = await fetch(process.env.URL + `/api/magazines`).then(
+  const magazinesData = await fetch(process.env.NEXT_PUBLIC_URL + `/api/magazines`).then(
     (res) => res.json()
   );
 

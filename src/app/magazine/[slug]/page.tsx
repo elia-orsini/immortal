@@ -22,7 +22,7 @@ const dataFetcher = async (
   magazineData: any;
   magazineMeta: Magazine;
 }> => {
-  const magazinesData = await fetch(process.env.URL + `/api/magazines`).then(
+  const magazinesData = await fetch(process.env.NEXT_PUBLIC_URL + `/api/magazines`).then(
     (res) => res.json()
   );
 
@@ -35,11 +35,11 @@ const dataFetcher = async (
   const path = match.id;
 
   const magazineData = await fetch(
-    process.env.URL + `/api/magazineData/${path}`
+    process.env.NEXT_PUBLIC_URL + `/api/magazineData/${path}`
   ).then((res) => res.json());
 
   const magazineMeta = await fetch(
-    process.env.URL + `/api/magazine/${path}`
+    process.env.NEXT_PUBLIC_URL + `/api/magazine/${path}`
   ).then((res) => res.json());
 
   if (!magazineMeta.doesHaveAPage) notFound();
@@ -126,7 +126,7 @@ export async function generateMetadata(
 }
 
 export async function generateStaticParams() {
-  const magazinesData = await fetch(process.env.URL + `/api/magazines`).then(
+  const magazinesData = await fetch(process.env.NEXT_PUBLIC_URL + `/api/magazines`).then(
     (res) => res.json()
   );
 
