@@ -23,7 +23,7 @@ const dataFetcher = async (
   magazineMeta: Magazine;
 }> => {
   const magazinesData = await fetch(
-    process.env.NEXT_PUBLIC_URL + `/api/magazines`
+    "https://immortal-mags.xyz/api/magazines"
   ).then((res) => res.json());
 
   const match = magazinesData.find(
