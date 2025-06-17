@@ -103,7 +103,8 @@ export async function generateMetadata(
 
   const previousImages = (await parent).openGraph?.images || [];
 
-  const description = magazineMeta.description || (await parent).description || "";
+  const description =
+    magazineMeta.description || (await parent).description || "";
 
   const capitalizedField = capitalizeString(
     `${magazineMeta.field}` || "Unknown Field"
@@ -130,9 +131,10 @@ export async function generateMetadata(
 }
 
 export async function generateStaticParams() {
-  const magazinesData = await fetch(
-    process.env.NEXT_PUBLIC_URL + `/api/magazines`
-  ).then((res) => res.json());
+  const url = process.env.NEXT_PUBLIC_URL
+    ? `${process.env.NEXT_PUBLIC_URL}/api/magazines`
+    : "https://immortal-mags.xyz/api/magazines";
+  const magazinesData = await fetch(url).then((res) => res.json());
 
   return magazinesData.map((mag: Magazine) => ({
     slug: convertTitleToSlug(mag.name || ""),
