@@ -4,7 +4,7 @@ export async function GET(request, { params }) {
     {
       next: { revalidate: 518400 },
     }
-  ).then((res) => res.json());
+  ).then((res) => (res.ok ? res.json() : {}));
 
   const mag = data.find((mag) => mag.id === params.slug);
 

@@ -10,7 +10,7 @@ const dataFetcher = async (): Promise<{
 }> => {
   const magazinesData = await fetch(
     process.env.NEXT_PUBLIC_URL + `/api/magazines`
-  ).then((res) => res.json());
+  ).then((res) => (res.ok ? res.json() : []));
 
   const filteredMags = magazinesData.filter(
     (mag: Magazine) => !mag.field.includes("too-big")
