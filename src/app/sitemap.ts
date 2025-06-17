@@ -4,26 +4,26 @@ import Magazine from "@/types/IMagazine";
 import convertTitleToSlug from "@/utils/convertTitleToSlug";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const magazinesData = await fetch(process.env.NEXT_PUBLIC_URL + `/api/magazines`).then(
-    (res) => res.json()
-  );
+  // const magazinesData = await fetch(process.env.NEXT_PUBLIC_URL + `/api/magazines`).then(
+  //   (res) => res.json()
+  // );
 
-  const sitemapPages: any[] = [];
+  // const sitemapPages: any[] = [];
 
-  magazinesData.map((mag: Magazine) => {
-    if (mag.doesHaveAPage) {
-      const sitemapEntry = {
-        url: `https://immortal-mags.xyz/magazine/${convertTitleToSlug(
-          mag.name
-        )}`,
-        lastModified: new Date(),
-        changeFrequency: "daily",
-        priority: 0.8,
-      };
+  // magazinesData.map((mag: Magazine) => {
+  //   if (mag.doesHaveAPage) {
+  //     const sitemapEntry = {
+  //       url: `https://immortal-mags.xyz/magazine/${convertTitleToSlug(
+  //         mag.name
+  //       )}`,
+  //       lastModified: new Date(),
+  //       changeFrequency: "daily",
+  //       priority: 0.8,
+  //     };
 
-      sitemapPages.push(sitemapEntry);
-    }
-  });
+  //     sitemapPages.push(sitemapEntry);
+  //   }
+  // });
 
   return [
     {
@@ -32,6 +32,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly",
       priority: 1,
     },
-    ...sitemapPages,
+    // ...sitemapPages,
   ];
 }
