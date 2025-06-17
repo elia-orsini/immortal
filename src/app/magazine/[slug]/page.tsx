@@ -22,9 +22,9 @@ const dataFetcher = async (
   magazineData: any;
   magazineMeta: Magazine;
 }> => {
-  const magazinesData = await fetch(process.env.NEXT_PUBLIC_URL + `/api/magazines`).then(
-    (res) => res.json()
-  );
+  const magazinesData = await fetch(
+    process.env.NEXT_PUBLIC_URL + `/api/magazines`
+  ).then((res) => res.json());
 
   const match = magazinesData.find(
     (mag: Magazine) => convertTitleToSlug(mag.name) === slug
@@ -103,12 +103,16 @@ export async function generateMetadata(
 
   const previousImages = (await parent).openGraph?.images || [];
 
-  const description = magazineMeta.description || (await parent).description;
+  const description = magazineMeta.description || (await parent).description || "";
 
-  const capitalizedField = capitalizeString(`${magazineMeta.field}`);
-  const capitalizedCity = capitalizeString(`${magazineMeta.city}`);
+  const capitalizedField = capitalizeString(
+    `${magazineMeta.field}` || "Unknown Field"
+  );
+  const capitalizedCity = capitalizeString(
+    `${magazineMeta.city || "Unknown City"}`
+  );
   const capitalizedFrequency = capitalizeString(
-    convertIssuerAYearToText(`${magazineMeta.issuesPerYear}`)
+    convertIssuerAYearToText(`${magazineMeta.issuesPerYear || "-"}`)
   );
   const initialArticle = getRightArticle(capitalizedFrequency);
 
@@ -126,9 +130,9 @@ export async function generateMetadata(
 }
 
 export async function generateStaticParams() {
-  const magazinesData = await fetch(process.env.NEXT_PUBLIC_URL + `/api/magazines`).then(
-    (res) => res.json()
-  );
+  const magazinesData = await fetch(
+    process.env.NEXT_PUBLIC_URL + `/api/magazines`
+  ).then((res) => res.json());
 
   return magazinesData.map((mag: Magazine) => ({
     slug: convertTitleToSlug(mag.name || ""),
