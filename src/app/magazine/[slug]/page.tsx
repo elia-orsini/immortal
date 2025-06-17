@@ -34,13 +34,41 @@ const dataFetcher = async (
 
   const path = match.id;
 
-  const magazineData = await fetch(
-    process.env.NEXT_PUBLIC_URL + `/api/magazineData/${path}`
-  ).then((res) => res.json());
+  const magazineData = {
+    id: "8c625cec-99e8-4fad-a4c5-8c1f35022e46",
+    city: "tokyo",
+    issuesNumber: "1",
+    description:
+      "Troublemakers is a Tokyo-based independent magazine that tells stories of misfits in english and japanese.",
+    link: "https://troublemakers.me",
+    status: "ALIVE",
+    since: "2024",
+    country: ["JAPAN"],
+    language: ["ENGLISH", "JAPANESE"],
+    issuesPerYear: "-",
+    field: ["writings"],
+    doesHaveAPage: true,
+    imageCover: [[Object]],
+    name: "Troublemakers",
+  };
 
-  const magazineMeta = await fetch(
-    process.env.NEXT_PUBLIC_URL + `/api/magazine/${path}`
-  ).then((res) => res.json());
+  const magazineMeta = {
+    id: "8c625cec-99e8-4fad-a4c5-8c1f35022e46",
+    city: "tokyo",
+    issuesNumber: "1",
+    description:
+      "Troublemakers is a Tokyo-based independent magazine that tells stories of misfits in english and japanese.",
+    link: "https://troublemakers.me",
+    status: "ALIVE",
+    since: "2024",
+    country: ["JAPAN"],
+    language: ["ENGLISH", "JAPANESE"],
+    issuesPerYear: "-",
+    field: "writings",
+    doesHaveAPage: true,
+    imageCover: [[Object]],
+    name: "Troublemakers",
+  };
 
   if (!magazineMeta.doesHaveAPage) notFound();
 
