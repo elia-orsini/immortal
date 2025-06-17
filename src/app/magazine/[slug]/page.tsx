@@ -159,11 +159,11 @@ export default SingleMagazine;
 //   };
 // }
 
-export async function generateStaticParams() {
-  const url = `${process.env.NEXT_PUBLIC_URL}/api/magazines`;
-  const magazinesData = await fetch(url).then((res) => res.json());
+// export async function generateStaticParams() {
+//   const url = `${process.env.NEXT_PUBLIC_URL}/api/magazines`;
+//   const magazinesData = await fetch(url).then((res) => res.json());
 
-  return magazinesData.map((mag: Magazine) => ({
-    slug: convertTitleToSlug(mag.name || ""),
-  }));
-}
+//   return magazinesData.map((mag: Magazine) => ({
+//     slug: convertTitleToSlug(mag.name || ""),
+//   }));
+// }
