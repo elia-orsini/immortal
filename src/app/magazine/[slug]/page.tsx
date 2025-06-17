@@ -22,9 +22,10 @@ const dataFetcher = async (
   magazineData: any;
   magazineMeta: Magazine;
 }> => {
-  const magazinesData = await fetch(
-    `${process.env.NEXT_PUBLIC_URL}/api/magazines`
-  ).then((res) => res.json());
+  // const magazinesData = await fetch(
+  //   `${process.env.NEXT_PUBLIC_URL}/api/magazines`
+  // ).then((res) => res.json());
+  const magazinesData: any = []
 
   const match = magazinesData.find(
     (mag: Magazine) => convertTitleToSlug(mag.name) === slug
@@ -91,44 +92,44 @@ const SingleMagazine: NextPage<{ params: any }> = async ({ params }) => {
 
 export default SingleMagazine;
 
-export async function generateMetadata(
-  { params }: any,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
-  const { magazineMeta } = await dataFetcher(params.slug);
+// export async function generateMetadata(
+//   { params }: any,
+//   parent: ResolvingMetadata
+// ): Promise<Metadata> {
+//   const { magazineMeta } = await dataFetcher(params.slug);
 
-  if (!magazineMeta) {
-    return {};
-  }
+//   if (!magazineMeta) {
+//     return {};
+//   }
 
-  const previousImages = (await parent).openGraph?.images || [];
+//   const previousImages = (await parent).openGraph?.images || [];
 
-  const description =
-    magazineMeta.description || (await parent).description || "";
+//   const description =
+//     magazineMeta.description || (await parent).description || "";
 
-  const capitalizedField = capitalizeString(
-    `${magazineMeta.field}` || "Unknown Field"
-  );
-  const capitalizedCity = capitalizeString(
-    `${magazineMeta.city || "Unknown City"}`
-  );
-  const capitalizedFrequency = capitalizeString(
-    convertIssuerAYearToText(`${magazineMeta.issuesPerYear || "-"}`)
-  );
-  const initialArticle = getRightArticle(capitalizedFrequency);
+//   const capitalizedField = capitalizeString(
+//     `${magazineMeta.field}` || "Unknown Field"
+//   );
+//   const capitalizedCity = capitalizeString(
+//     `${magazineMeta.city || "Unknown City"}`
+//   );
+//   const capitalizedFrequency = capitalizeString(
+//     convertIssuerAYearToText(`${magazineMeta.issuesPerYear || "-"}`)
+//   );
+//   const initialArticle = getRightArticle(capitalizedFrequency);
 
-  const imageCover = magazineMeta.imageCover
-    ? [`${magazineMeta.imageCover[0].url}`, ...previousImages]
-    : [...previousImages];
+//   const imageCover = magazineMeta.imageCover
+//     ? [`${magazineMeta.imageCover[0].url}`, ...previousImages]
+//     : [...previousImages];
 
-  return {
-    title: `${magazineMeta.name}, ${initialArticle} ${capitalizedFrequency} ${capitalizedField} Magazine based in ${capitalizedCity}`,
-    description: description,
-    openGraph: {
-      images: imageCover,
-    },
-  };
-}
+//   return {
+//     title: `${magazineMeta.name}, ${initialArticle} ${capitalizedFrequency} ${capitalizedField} Magazine based in ${capitalizedCity}`,
+//     description: description,
+//     openGraph: {
+//       images: imageCover,
+//     },
+//   };
+// }
 
 export async function generateStaticParams() {
   const url = `${process.env.NEXT_PUBLIC_URL}/api/magazines`;
