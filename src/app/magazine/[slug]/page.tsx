@@ -131,9 +131,7 @@ export async function generateMetadata(
 }
 
 export async function generateStaticParams() {
-  const url = process.env.NEXT_PUBLIC_URL
-    ? `${process.env.NEXT_PUBLIC_URL}/api/magazines`
-    : "https://immortal-mags.xyz/api/magazines";
+  const url = "https://immortal-mags.xyz/api/magazines";
   const magazinesData = await fetch(url).then((res) => res.json());
 
   return magazinesData.map((mag: Magazine) => ({
