@@ -9,7 +9,7 @@ const dataFetcher = async (): Promise<{
   magazinesData: Magazine[];
 }> => {
   const magazinesData = await fetch(
-    process.env.NEXT_PUBLIC_URL + `/api/magazines`
+    `https://immortal-mags.xyz/api/magazines`
   ).then((res) => (res.ok ? res.json() : []));
 
   const filteredMags = magazinesData.filter(
