@@ -22,13 +22,11 @@ const dataFetcher = async (): Promise<{
 export default async function Home() {
   const { filteredMags, magazinesData } = await dataFetcher();
 
-  const magWithPages = magazinesData.filter(
-    (mag: Magazine) => mag.doesHaveAPage
-  );
-  const randomIndex = Math.floor(Math.random() * magWithPages.length);
-  const randomMag = magWithPages[randomIndex];
-
-  console.log(process.env.NEXT_PUBLIC_URL + `/api/magazines`);
+  // const magWithPages = magazinesData.filter(
+  //   (mag: Magazine) => mag.doesHaveAPage
+  // );
+  // const randomIndex = Math.floor(Math.random() * magWithPages.length);
+  // const randomMag = magWithPages[randomIndex];
 
   return (
     <>
@@ -40,7 +38,7 @@ export default async function Home() {
         </section>
       </main>
 
-      <section className="mb-6">
+      {/* <section className="mb-6">
         <p className="text-xs sm:mx-10 mx-2">
           undecided? bored? feeling bold? discover a{" "}
           <Link
@@ -50,7 +48,7 @@ export default async function Home() {
             random magazine
           </Link>
         </p>
-      </section>
+      </section> */}
     </>
   );
 }
