@@ -23,7 +23,7 @@ const dataFetcher = async (
   magazineMeta: Magazine;
 }> => {
   const magazinesData = await fetch(
-    "https://immortal-mags.xyz/api/magazines"
+    `${process.env.NEXT_PUBLIC_URL}/api/magazines`
   ).then((res) => res.json());
 
   const match = magazinesData.find(
@@ -131,8 +131,10 @@ export async function generateMetadata(
 }
 
 export async function generateStaticParams() {
-  const url = "https://immortal-mags.xyz/api/magazines";
+  const url = `${process.env.NEXT_PUBLIC_URL}/api/magazines`;
   const magazinesData = await fetch(url).then((res) => res.json());
+
+  return [];
 
   return magazinesData.map((mag: Magazine) => ({
     slug: convertTitleToSlug(mag.name || ""),
