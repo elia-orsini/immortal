@@ -5,26 +5,26 @@ const SingleMagazineMeta: React.FC<{ meta: Magazine }> = ({ meta }) => {
   return (
     <section className="flex flex-col m-4 sm:gap-y-2">
       <div className="w-full w-11/12 sm:w-8/12 sm:mx-auto flex flex-col sm:flex-row justify-between uppercase text-sm">
-        {meta.city !== "-" && <p>based in {meta.city}</p>}
+        {meta?.city !== "-" && <p>based in {meta?.city}</p>}
 
-        <p>{convertIssuerAYearToText(meta.issuesPerYear.toString())}</p>
+        <p>{convertIssuerAYearToText(meta?.issuesPerYear.toString())}</p>
 
-        {meta.since && <p>since {meta.since}</p>}
+        {meta?.since && <p>since {meta?.since}</p>}
       </div>
 
-      {(meta.link || meta.language) && (
+      {(meta?.link || meta?.language) && (
         <div className="w-full w-11/12 sm:w-8/12 sm:mx-auto flex flex-col sm:flex-row justify-between uppercase text-sm">
-          {meta.link && (
-            <a href={meta.link} target="_blank" className="underline">
+          {meta?.link && (
+            <a href={meta?.link} target="_blank" className="underline">
               website
             </a>
           )}
 
-          {meta.language && (
+          {meta?.language && (
             <p>
-              {meta.language.length === 2 && `bilingual (`}
-              {meta.language.join(", ")}
-              {meta.language.length === 2 && `)`}
+              {meta?.language.length === 2 && `bilingual (`}
+              {meta?.language.join(", ")}
+              {meta?.language.length === 2 && `)`}
             </p>
           )}
         </div>

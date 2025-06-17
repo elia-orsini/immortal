@@ -15,87 +15,87 @@ import RecomendationsSection from "@/components/SingleMagazine/ReccomendationsSe
 import getRightArticle from "@/utils/getRightArticle";
 import SmallNav from "@/components/SmallNav";
 
-const dataFetcher = async (
-  slug: string
-): Promise<{
-  allMags: Magazine[];
-  magazineData: any;
-  magazineMeta: Magazine;
-}> => {
-  const magazinesData = await fetch(
-    `${process.env.NEXT_PUBLIC_URL}/api/magazines`
-  ).then((res) => res.json());
+// const dataFetcher = async (
+//   slug: string
+// ): Promise<{
+//   allMags: Magazine[];
+//   magazineData: any;
+//   magazineMeta: Magazine;
+// }> => {
+//   const magazinesData = await fetch(
+//     `${process.env.NEXT_PUBLIC_URL}/api/magazines`
+//   ).then((res) => res.json());
 
-  const match = magazinesData.find(
-    (mag: Magazine) => convertTitleToSlug(mag.name) === slug
-  );
+//   const match = magazinesData.find(
+//     (mag: Magazine) => convertTitleToSlug(mag.name) === slug
+//   );
 
-  if (!match) notFound();
+//   if (!match) notFound();
 
-  const path = match.id;
+//   const path = match.id;
 
-  const magazineData = {
-    id: "8c625cec-99e8-4fad-a4c5-8c1f35022e46",
-    city: "tokyo",
-    issuesNumber: "1",
-    description:
-      "Troublemakers is a Tokyo-based independent magazine that tells stories of misfits in english and japanese.",
-    link: "https://troublemakers.me",
-    status: "ALIVE",
-    since: "2024",
-    country: ["JAPAN"],
-    language: ["ENGLISH", "JAPANESE"],
-    issuesPerYear: "-",
-    field: ["writings"],
-    doesHaveAPage: true,
-    imageCover: [[Object]],
-    name: "Troublemakers",
-  };
+//   const magazineData = {
+//     id: "8c625cec-99e8-4fad-a4c5-8c1f35022e46",
+//     city: "tokyo",
+//     issuesNumber: "1",
+//     description:
+//       "Troublemakers is a Tokyo-based independent magazine that tells stories of misfits in english and japanese.",
+//     link: "https://troublemakers.me",
+//     status: "ALIVE",
+//     since: "2024",
+//     country: ["JAPAN"],
+//     language: ["ENGLISH", "JAPANESE"],
+//     issuesPerYear: "-",
+//     field: ["writings"],
+//     doesHaveAPage: true,
+//     imageCover: [[Object]],
+//     name: "Troublemakers",
+//   };
 
-  const magazineMeta = {
-    id: "8c625cec-99e8-4fad-a4c5-8c1f35022e46",
-    city: "tokyo",
-    issuesNumber: "1",
-    description:
-      "Troublemakers is a Tokyo-based independent magazine that tells stories of misfits in english and japanese.",
-    link: "https://troublemakers.me",
-    status: "ALIVE",
-    since: "2024",
-    country: ["JAPAN"],
-    language: ["ENGLISH", "JAPANESE"],
-    issuesPerYear: "-",
-    field: "writings",
-    doesHaveAPage: true,
-    imageCover: [[Object]],
-    name: "Troublemakers",
-  };
+//   const magazineMeta = {
+//     id: "8c625cec-99e8-4fad-a4c5-8c1f35022e46",
+//     city: "tokyo",
+//     issuesNumber: "1",
+//     description:
+//       "Troublemakers is a Tokyo-based independent magazine that tells stories of misfits in english and japanese.",
+//     link: "https://troublemakers.me",
+//     status: "ALIVE",
+//     since: "2024",
+//     country: ["JAPAN"],
+//     language: ["ENGLISH", "JAPANESE"],
+//     issuesPerYear: "-",
+//     field: "writings",
+//     doesHaveAPage: true,
+//     imageCover: [[Object]],
+//     name: "Troublemakers",
+//   };
 
-  if (!magazineMeta.doesHaveAPage) notFound();
+//   if (!magazineMeta.doesHaveAPage) notFound();
 
-  return { allMags: magazinesData, magazineData, magazineMeta };
-};
+//   return { allMags: magazinesData, magazineData, magazineMeta };
+// };
 
 const SingleMagazine: NextPage<{ params: any }> = async ({ params }) => {
-  const { allMags, magazineData, magazineMeta } = await dataFetcher(
-    params.slug
-  );
+  // const { allMags, magazineData, magazineMeta } = await dataFetcher(
+  //   params.slug
+  // );
 
-  const jsonLd: WithContext<Periodical> = {
-    "@context": "https://schema.org",
-    "@type": "Periodical",
-    name: magazineMeta.name,
-    image: magazineMeta.imageCover && magazineMeta.imageCover[0].rawUrl,
-    thumbnailUrl: magazineMeta.imageCover && magazineMeta.imageCover[0].rawUrl,
-    description: magazineMeta.description,
-    genre: magazineMeta.field[0],
-    keywords: `Magazine, ${magazineMeta.name}, ${magazineMeta.city}, ${magazineMeta.field} Magazine`,
-    url: magazineMeta.link,
-    inLanguage: magazineMeta.language?.join(", ").toLowerCase() || "English",
-  };
+  // const jsonLd: WithContext<Periodical> = {
+  //   "@context": "https://schema.org",
+  //   "@type": "Periodical",
+  //   name: magazineMeta?.name,
+  //   image: magazineMeta?.imageCover && magazineMeta?.imageCover[0].rawUrl,
+  //   thumbnailUrl: magazineMeta?.imageCover && magazineMeta?.imageCover[0].rawUrl,
+  //   description: magazineMeta?.description,
+  //   genre: magazineMeta?.field[0],
+  //   keywords: `Magazine, ${magazineMeta?.name}, ${magazineMeta?.city}, ${magazineMeta?.field} Magazine`,
+  //   url: magazineMeta?.link,
+  //   inLanguage: magazineMeta?.language?.join(", ").toLowerCase() || "English",
+  // };
 
   return (
     <main className="flex min-h-screen w-screen flex-col mb-10">
-      <SmallNav />
+      {/* <SmallNav />
 
       <SingleMagazineHeader meta={magazineMeta} />
 
@@ -112,51 +112,52 @@ const SingleMagazine: NextPage<{ params: any }> = async ({ params }) => {
         <NotionRenderer blockMap={magazineData} />
       </article>
 
-      <RecomendationsSection allMags={allMags} magMetadata={magazineMeta} />
+      <RecomendationsSection allMags={allMags} magMetadata={magazineMeta} /> */}
+      fixing...
     </main>
   );
 };
 
 export default SingleMagazine;
 
-export async function generateMetadata(
-  { params }: any,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
-  const { magazineMeta } = await dataFetcher(params.slug);
+// export async function generateMetadata(
+//   { params }: any,
+//   parent: ResolvingMetadata
+// ): Promise<Metadata> {
+//   const { magazineMeta } = await dataFetcher(params.slug);
 
-  if (!magazineMeta) {
-    return {};
-  }
+//   if (!magazineMeta) {
+//     return {};
+//   }
 
-  const previousImages = (await parent).openGraph?.images || [];
+//   const previousImages = (await parent).openGraph?.images || [];
 
-  const description =
-    magazineMeta.description || (await parent).description || "";
+//   const description =
+//     magazineMeta.description || (await parent).description || "";
 
-  const capitalizedField = capitalizeString(
-    `${magazineMeta.field}` || "Unknown Field"
-  );
-  const capitalizedCity = capitalizeString(
-    `${magazineMeta.city || "Unknown City"}`
-  );
-  const capitalizedFrequency = capitalizeString(
-    convertIssuerAYearToText(`${magazineMeta.issuesPerYear || "-"}`)
-  );
-  const initialArticle = getRightArticle(capitalizedFrequency);
+//   const capitalizedField = capitalizeString(
+//     `${magazineMeta.field}` || "Unknown Field"
+//   );
+//   const capitalizedCity = capitalizeString(
+//     `${magazineMeta.city || "Unknown City"}`
+//   );
+//   const capitalizedFrequency = capitalizeString(
+//     convertIssuerAYearToText(`${magazineMeta.issuesPerYear || "-"}`)
+//   );
+//   const initialArticle = getRightArticle(capitalizedFrequency);
 
-  const imageCover = magazineMeta.imageCover
-    ? [`${magazineMeta.imageCover[0].url}`, ...previousImages]
-    : [...previousImages];
+//   const imageCover = magazineMeta.imageCover
+//     ? [`${magazineMeta.imageCover[0].url}`, ...previousImages]
+//     : [...previousImages];
 
-  return {
-    title: `${magazineMeta.name}, ${initialArticle} ${capitalizedFrequency} ${capitalizedField} Magazine based in ${capitalizedCity}`,
-    description: description,
-    openGraph: {
-      images: imageCover,
-    },
-  };
-}
+//   return {
+//     title: `${magazineMeta.name}, ${initialArticle} ${capitalizedFrequency} ${capitalizedField} Magazine based in ${capitalizedCity}`,
+//     description: description,
+//     openGraph: {
+//       images: imageCover,
+//     },
+//   };
+// }
 
 export async function generateStaticParams() {
   const url = `${process.env.NEXT_PUBLIC_URL}/api/magazines`;

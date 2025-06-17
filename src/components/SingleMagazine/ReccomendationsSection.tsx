@@ -8,8 +8,8 @@ const RecomendationsSection: React.FC<{
 }> = ({ allMags, magMetadata }) => {
   const sameField = allMags.filter(
     (mag) =>
-      mag.field[0] === magMetadata.field[0] &&
-      mag.name !== magMetadata.name &&
+      mag.field[0] === magMetadata?.field[0] &&
+      mag.name !== magMetadata?.name &&
       mag.doesHaveAPage
   );
 
