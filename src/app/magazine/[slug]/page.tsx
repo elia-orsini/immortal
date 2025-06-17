@@ -97,6 +97,10 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { magazineMeta } = await dataFetcher(params.slug);
 
+  if (!magazineMeta) {
+    return {};
+  }
+
   const previousImages = (await parent).openGraph?.images || [];
 
   const description = magazineMeta.description || (await parent).description;
@@ -127,6 +131,6 @@ export async function generateStaticParams() {
   );
 
   return magazinesData.map((mag: Magazine) => ({
-    slug: convertTitleToSlug(mag.name),
+    slug: convertTitleToSlug(mag.name || ""),
   }));
 }
