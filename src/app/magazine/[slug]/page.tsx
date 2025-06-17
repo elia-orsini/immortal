@@ -35,11 +35,11 @@ const dataFetcher = async (
   const path = match.id;
 
   const magazineData = await fetch(
-    process.env.URL + `/api/magazineData/${path}`
+    process.env.NEXT_PUBLIC_URL + `/api/magazineData/${path}`
   ).then((res) => res.json());
 
   const magazineMeta = await fetch(
-    process.env.URL + `/api/magazine/${path}`
+    process.env.NEXT_PUBLIC_URL + `/api/magazine/${path}`
   ).then((res) => res.json());
 
   if (!magazineMeta.doesHaveAPage) notFound();
@@ -81,7 +81,6 @@ const SingleMagazine: NextPage<{ params: any }> = async ({ params }) => {
         <NotionRenderer blockMap={magazineData} />
       </article>
       <RecomendationsSection allMags={allMags} magMetadata={magazineMeta} />
-      fixing...
     </main>
   );
 };
