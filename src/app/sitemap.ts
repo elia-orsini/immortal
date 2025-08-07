@@ -2,11 +2,13 @@ import { MetadataRoute } from "next";
 
 import Magazine from "@/types/IMagazine";
 import convertTitleToSlug from "@/utils/convertTitleToSlug";
+import { fetchOptions } from "./constants/fetchOptions";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const magazinesData = await fetch(process.env.NEXT_PUBLIC_URL + `/api/magazines`).then(
-    (res) => res.json()
-  );
+  const magazinesData = await fetch(
+    process.env.NEXT_PUBLIC_URL + `/api/magazines`,
+    fetchOptions
+  ).then((res) => res.json());
 
   const sitemapPages: any[] = [];
 

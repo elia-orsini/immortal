@@ -14,6 +14,7 @@ import convertTitleToSlug from "@/utils/convertTitleToSlug";
 import RecomendationsSection from "@/components/SingleMagazine/ReccomendationsSection";
 import getRightArticle from "@/utils/getRightArticle";
 import SmallNav from "@/components/SmallNav";
+import { fetchOptions } from "@/app/constants/fetchOptions";
 
 const dataFetcher = async (
   slug: string
@@ -23,7 +24,8 @@ const dataFetcher = async (
   magazineMeta: Magazine;
 }> => {
   const magazinesData = await fetch(
-    `${process.env.NEXT_PUBLIC_URL}/api/magazines`
+    `${process.env.NEXT_PUBLIC_URL}/api/magazines`,
+    fetchOptions
   ).then((res) => res.json());
 
   const match = magazinesData.find(
@@ -35,11 +37,13 @@ const dataFetcher = async (
   const path = match.id;
 
   const magazineData = await fetch(
-    process.env.NEXT_PUBLIC_URL + `/api/magazineData/${path}`
+    process.env.NEXT_PUBLIC_URL + `/api/magazineData/${path}`,
+    fetchOptions
   ).then((res) => res.json());
 
   const magazineMeta = await fetch(
-    process.env.NEXT_PUBLIC_URL + `/api/magazine/${path}`
+    process.env.NEXT_PUBLIC_URL + `/api/magazine/${path}`,
+    fetchOptions
   ).then((res) => res.json());
 
   if (!magazineMeta.doesHaveAPage) notFound();
@@ -63,7 +67,7 @@ const SingleMagazine: NextPage<{ params: any }> = async ({ params }) => {
     genre: magazineMeta?.field[0],
     keywords: `Magazine, ${magazineMeta?.name}, ${magazineMeta?.city}, ${magazineMeta?.field} Magazine`,
     url: magazineMeta?.link,
-    inLanguage: magazineMeta?.language?.join(", ").toLowerCase() || "English",
+    inLanguage: "English",
   };
 
   return (
@@ -128,9 +132,15 @@ export async function generateMetadata(
 
 export async function generateStaticParams() {
   const url = `${process.env.NEXT_PUBLIC_URL}/api/magazines`;
-  const magazinesData = await fetch(url).then((res) => res.json());
+  const magazinesData = await fetch(url, fetchOptions).then((res) =>
+    res.json()
+  );
 
-  return magazinesData.map((mag: Magazine) => ({
+  const magsWithPages = magazinesData.filter(
+    (mag: Magazine) => mag.doesHaveAPage
+  );
+
+  return magsWithPages.map((mag: Magazine) => ({
     slug: convertTitleToSlug(mag.name || ""),
   }));
 }

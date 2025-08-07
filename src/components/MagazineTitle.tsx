@@ -31,6 +31,7 @@ const MagazineTitle: React.FC<{ magazine: Magazine }> = ({ magazine }) => {
                 className="-ml-2 -mr-1 inline"
                 width={24}
                 height={20}
+                unoptimized
               />
               <span>{magazine.status}</span>
             </>

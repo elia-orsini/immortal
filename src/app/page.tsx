@@ -3,13 +3,15 @@ import MagazinesSection from "@/components/MagazinesSection/MagazinesSection";
 import Magazine from "@/types/IMagazine";
 import convertTitleToSlug from "@/utils/convertTitleToSlug";
 import Link from "next/link";
+import { fetchOptions } from "./constants/fetchOptions";
 
 const dataFetcher = async (): Promise<{
   filteredMags: Magazine[];
   magazinesData: Magazine[];
 }> => {
   const magazinesData = await fetch(
-    `${process.env.NEXT_PUBLIC_URL}/api/magazines`
+    `${process.env.NEXT_PUBLIC_URL}/api/magazines`,
+    fetchOptions
   ).then((res) => (res.ok ? res.json() : []));
 
   const filteredMags = magazinesData.filter(
