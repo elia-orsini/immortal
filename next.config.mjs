@@ -17,7 +17,6 @@ const nextConfig = {
       },
     ],
     minimumCacheTTL: 2592000, // 30 days
-    qualities: [75],
   },
   /**
    * Description
