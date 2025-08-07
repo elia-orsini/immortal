@@ -32,8 +32,8 @@ const StatsComponent: React.FC<{
       </p>
 
       <p className="sm:inline whitespace-normal">
-        <span className="animatedNumber font-extrabold">{`${stillAlive.length} `}</span>
-        <span>alive</span>{" "}
+        <span className="animatedNumber font-extrabold">{`${stillAlive.length}`}</span>{" "}
+        <span>alive</span>
       </p>
 
       <p className="sm:inline whitespace-normal">
