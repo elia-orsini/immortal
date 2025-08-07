@@ -23,7 +23,7 @@ const StatsComponent: React.FC<{
   }, []);
 
   return (
-    <section className="uppercase text-xs sm:text-sm sm:pt-0.5 w-full sm:space-x-3">
+    <section className="uppercase text-xs sm:text-sm my-auto sm:pt-0.5 w-full sm:space-x-3">
       <p className="sm:inline whitespace-normal">
         <span className="animatedNumber font-extrabold">
           {filteredMags.length}
@@ -32,9 +32,7 @@ const StatsComponent: React.FC<{
       </p>
 
       <p className="sm:inline whitespace-normal">
-        <span className="animatedNumber font-extrabold">{`${stillAlive.length}`}</span>
-        <span className="font-extrabold">/</span>
-        <span className="animatedNumber font-extrabold">{`${filteredMags.length}`}</span>{" "}
+        <span className="animatedNumber font-extrabold">{`${stillAlive.length} `}</span>
         <span>alive</span>{" "}
       </p>
 
@@ -44,7 +42,7 @@ const StatsComponent: React.FC<{
       </p>
 
       <p className="sm:inline whitespace-normal">
-        <span className="animatedNumber font-extrabold">22</span>{" "}
+        <span className="animatedNumber font-extrabold">23</span>{" "}
         <span>countries</span>{" "}
       </p>
     </section>

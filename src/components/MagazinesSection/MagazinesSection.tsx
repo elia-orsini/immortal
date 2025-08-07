@@ -13,7 +13,7 @@ const MagazinesSection: React.FC<{
 
   return (
     <div className="w-full flex flex-col">
-      <div className="flex flex-col xl:flex-row mb-6 sm:mb-8 gap-y-2">
+      <div className="flex flex-col lg:flex-row mb-6 sm:mb-8 gap-y-2">
         <StatsComponent filteredMags={filteredMags} />
 
         <SearchInput
