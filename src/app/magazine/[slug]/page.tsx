@@ -81,6 +81,31 @@ const SingleMagazine: NextPage<{ params: any }> = async ({ params }) => {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "Home",
+                  item: "https://immortal-mags.xyz",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: magazineMeta?.name,
+                  item: `https://immortal-mags.xyz/magazine/${convertTitleToSlug(
+                    magazineMeta?.name || ""
+                  )}`,
+                },
+              ],
+            }),
+          }}
+        />
 
         <NotionRenderer blockMap={magazineData} />
       </article>
@@ -121,10 +146,38 @@ export async function generateMetadata(
     ? [`${magazineMeta.imageCover[0].url}`, ...previousImages]
     : [...previousImages];
 
+  const canonicalUrl = `https://immortal-mags.xyz/magazine/${convertTitleToSlug(
+    magazineMeta.name
+  )}`;
+
   return {
     title: `${magazineMeta.name}, ${initialArticle} ${capitalizedFrequency} ${capitalizedField} Magazine based in ${capitalizedCity}`,
     description: description,
+    keywords: [
+      "Magazine",
+      magazineMeta.name,
+      capitalizedCity,
+      capitalizedField,
+      `${magazineMeta.name} magazine`,
+    ],
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
     openGraph: {
+      type: "article",
+      url: canonicalUrl,
+      title: `${magazineMeta.name} – ${capitalizedField} magazine in ${capitalizedCity}`,
+      description,
+      images: imageCover,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${magazineMeta.name} – ${capitalizedField} magazine in ${capitalizedCity}`,
+      description,
       images: imageCover,
     },
   };

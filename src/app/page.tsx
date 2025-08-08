@@ -4,6 +4,7 @@ import Magazine from "@/types/IMagazine";
 import convertTitleToSlug from "@/utils/convertTitleToSlug";
 import Link from "next/link";
 import { fetchOptions } from "./constants/fetchOptions";
+import type { Metadata } from "next";
 
 const dataFetcher = async (): Promise<{
   filteredMags: Magazine[];
@@ -54,3 +55,21 @@ export default async function Home() {
     </>
   );
 }
+
+export const metadata: Metadata = {
+  title: "Immortal Mags | Independent Magazines Archive",
+  description:
+    "Explore the largest online archive of independent magazines. Browse, discover, and learn about magazines across fashion, design, coffee, cycling, and more.",
+  keywords:
+    [
+      "independent magazines",
+      "magazine archive",
+      "magazines directory",
+      "print magazines",
+      "periodicals",
+      "zines",
+    ],
+  alternates: {
+    canonical: "/",
+  },
+};

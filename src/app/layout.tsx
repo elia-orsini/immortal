@@ -13,6 +13,40 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      {/* Site-level structured data */}
+      <Script
+        id="ld-json-website"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "Immortal Mags",
+            url: "https://immortal-mags.xyz",
+            potentialAction: {
+              "@type": "SearchAction",
+              target:
+                "https://immortal-mags.xyz/?search={search_term_string}",
+              "query-input": "required name=search_term_string",
+            },
+          }),
+        }}
+      />
+      <Script
+        id="ld-json-organization"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "Immortal Mags",
+            url: "https://immortal-mags.xyz",
+            logo: "https://immortal-mags.xyz/opengraph-image.jpg",
+          }),
+        }}
+      />
       {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID && (
         <Script
           id="analytics"
@@ -37,6 +71,7 @@ export default function RootLayout({
 }
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://immortal-mags.xyz"),
   title: {
     template: "%s | Immortal Mags",
     default:
@@ -47,6 +82,46 @@ export const metadata: Metadata = {
   creator: "Elia Orsini",
   applicationName: "Immortal Mags",
   referrer: "origin-when-cross-origin",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://immortal-mags.xyz/",
+    siteName: "Immortal Mags",
+    title:
+      "Immortal Mags | Where magazines will never die. The largest online repository of independent magazines.",
+    description:
+      "Immortal Mags, where magazines will never die. We aim to be the largest online repository of independent magazines.",
+    images: [
+      {
+        url: "/opengraph-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Immortal Mags",
+      },
+    ],
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "Immortal Mags | Where magazines will never die. The largest online repository of independent magazines.",
+    description:
+      "Immortal Mags, where magazines will never die. We aim to be the largest online repository of independent magazines.",
+    images: ["/opengraph-image.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+      "max-snippet": -1,
+    },
+  },
 };
 
 export const viewport: Viewport = {
