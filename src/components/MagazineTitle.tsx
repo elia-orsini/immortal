@@ -18,7 +18,7 @@ const MagazineTitle: React.FC<{ magazine: Magazine }> = ({ magazine }) => {
           </Link>
 
           <div className="pointer-events-none invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-opacity duration-200 absolute z-20 -top-2 sm:top-auto sm:bottom-full sm:mb-2 left-0 sm:left-0">
-            <div className="w-[300px] max-w-[80vw] rounded-md border border-black bg-white shadow-md p-3">
+            <div className="w-[300px] max-w-[80vw] border border-black bg-white shadow-md p-3">
               <div className="flex gap-3">
                 {magazine?.imageCover?.[0]?.url && (
                   <div className="relative flex-shrink-0 w-16 h-20 border border-black overflow-hidden">
