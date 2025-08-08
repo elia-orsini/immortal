@@ -19,8 +19,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           mag.name
         )}`,
         lastModified: new Date(),
-        changeFrequency: "daily",
-        priority: 0.8,
+        changeFrequency: "monthly",
       };
 
       sitemapPages.push(sitemapEntry);
@@ -32,7 +31,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: "https://immortal-mags.xyz",
       lastModified: new Date(),
       changeFrequency: "weekly",
-      priority: 1,
     },
     ...sitemapPages,
   ];
