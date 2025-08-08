@@ -8,7 +8,7 @@ const MagazinesList: React.FC<{
   dividedByCategory: { [key: string]: Magazine[] };
 }> = ({ dividedByCategory }) => {
   return (
-    <div className="w-full space-y-10 sm:space-y-14">
+    <div className="w-full space-y-10">
       {Object.keys(dividedByCategory).map((category) => (
         <div key={category}>
           <div className="flex flex-row items-center">

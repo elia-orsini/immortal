@@ -15,7 +15,7 @@ export default function convertIssuerAYearToText(issueAYear: string): string {
     case "55":
       return "weekly";
     case "-":
-      return "irregular";
+      return "";
     default:
       return `${issueAYear} issues/year`;
   }
