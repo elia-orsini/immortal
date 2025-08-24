@@ -63,6 +63,7 @@ const SearchInput: React.FC<{
           width={16}
           height={16}
           className="inline mb-1 ml-"
+          unoptimized
         />
       </button>
     </div>

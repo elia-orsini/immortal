@@ -13,6 +13,7 @@ const SingleMagazineHeader: React.FC<{ meta: Magazine }> = ({ meta }) => {
               alt={`${meta?.name}, a ${meta?.field} magazine based in ${meta?.city}, ${meta?.name} magazine cover image`}
               className="object-cover"
               fill
+              unoptimized
             />
           )}
         </div>
