@@ -37,7 +37,7 @@ const MagazineTitle: React.FC<{ magazine: Magazine }> = ({ magazine }) => {
                     {magazine.name}
                   </p>
                   {magazine.description && (
-                    <p className="text-xs leading-snug max-h-24 overflow-hidden">
+                    <p className="text-xs leading-snug line-clamp-6">
                       {magazine.description}
                     </p>
                   )}

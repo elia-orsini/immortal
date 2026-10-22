@@ -51,15 +51,11 @@ const RecomendationsSection: React.FC<{
                       <p className="font-bold text-sm leading-tight mb-1 truncate">
                         {recc.name}
                       </p>
-                      {recc.since && (
-                        <span className="text-xs leading-snug max-h-24 overflow-hidden">
-                          Since {recc.since}.
-                        </span>
-                      )}{" "}
-                      {recc.city && (
-                        <span className="text-xs leading-snug max-h-24 overflow-hidden">
-                          Based in {recc.city}.
-                        </span>
+                      {(recc.since || recc.city) && (
+                        <p className="text-xs leading-snug line-clamp-6">
+                          {recc.since && <>Since {recc.since}. </>}
+                          {recc.city && <>Based in {recc.city}.</>}
+                        </p>
                       )}
                     </div>
                   </div>
