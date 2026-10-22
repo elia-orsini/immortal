@@ -21,7 +21,7 @@ const Footer: React.FC = () => {
           magazines.
         </p>
 
-        <p>© 2025</p>
+        <p>© {new Date().getFullYear()}</p>
       </div>
     </div>
   );
