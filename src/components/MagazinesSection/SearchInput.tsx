@@ -20,7 +20,7 @@ const SearchInput: React.FC<{
 
   useEffect(() => {
     const handleKeyDown = (event: any) => {
-      if ((event.ctrlKey || event.metaKey) && event.key === "f") {
+      if ((event.ctrlKey || event.metaKey) && event.key === "k") {
         event.preventDefault();
 
         inputField.current?.focus();
