@@ -2,27 +2,22 @@ import { MetadataRoute } from "next";
 
 import Magazine from "@/types/IMagazine";
 import convertTitleToSlug from "@/utils/convertTitleToSlug";
-import { fetchOptions } from "./constants/fetchOptions";
+import { getMagazines } from "@/lib/notion";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const magazinesData = await fetch(
-    process.env.NEXT_PUBLIC_URL + `/api/magazines`,
-    fetchOptions
-  ).then((res) => res.json());
+  const magazinesData = await getMagazines();
 
-  const sitemapPages: any[] = [];
+  const sitemapPages: MetadataRoute.Sitemap = [];
 
   magazinesData.map((mag: Magazine) => {
     if (mag.doesHaveAPage) {
-      const sitemapEntry = {
+      sitemapPages.push({
         url: `https://immortal-mags.xyz/magazine/${convertTitleToSlug(
           mag.name
         )}`,
         lastModified: new Date(),
         changeFrequency: "monthly",
-      };
-
-      sitemapPages.push(sitemapEntry);
+      });
     }
   });
 

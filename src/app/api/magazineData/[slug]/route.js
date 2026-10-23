@@ -1,10 +1,7 @@
+import { getMagazinePageData } from "@/lib/notion";
+
 export async function GET(request, { params }) {
-  const data = await fetch(
-    `${process.env.CLOUDFLARE_WORKER}/v1/page/${params.slug}`,
-    {
-      next: { revalidate: 1800 },
-    }
-  ).then((res) => (res.ok ? res.json() : {}));
+  const data = await getMagazinePageData(params.slug);
 
   return Response.json(data);
 }

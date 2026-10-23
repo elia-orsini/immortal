@@ -1,12 +1,7 @@
-export async function GET() {
-  const data = await fetch(
-    `${process.env.CLOUDFLARE_WORKER}/v1/table/${process.env.NOTION_DB}`,
-    {
-      next: { revalidate: 1800 },
-    }
-  ).then((res) => (res.ok ? res.json() : {}));
+import { getMagazines } from "@/lib/notion";
 
-  // return Response.json(data);
+export async function GET() {
+  const data = await getMagazines();
 
   return new Response(JSON.stringify(data), {
     headers: {

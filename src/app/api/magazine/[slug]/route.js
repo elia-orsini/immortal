@@ -1,12 +1,11 @@
-export async function GET(request, { params }) {
-  const data = await fetch(
-    `${process.env.CLOUDFLARE_WORKER}/v1/table/${process.env.NOTION_DB}`,
-    {
-      next: { revalidate: 1800 },
-    }
-  ).then((res) => (res.ok ? res.json() : {}));
+import { getMagazineById } from "@/lib/notion";
 
-  const mag = data.find((mag) => mag.id === params.slug);
+export async function GET(request, { params }) {
+  const mag = await getMagazineById(params.slug);
+
+  if (!mag) {
+    return Response.json(null, { status: 404 });
+  }
 
   return Response.json(mag);
 }

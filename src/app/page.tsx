@@ -2,18 +2,15 @@ import AnimatedIntro from "@/components/AnimatedIntro";
 import MagazinesSection from "@/components/MagazinesSection/MagazinesSection";
 import Magazine from "@/types/IMagazine";
 import convertTitleToSlug from "@/utils/convertTitleToSlug";
+import { getMagazines } from "@/lib/notion";
 import Link from "next/link";
-import { fetchOptions } from "./constants/fetchOptions";
 import type { Metadata } from "next";
 
 const dataFetcher = async (): Promise<{
   filteredMags: Magazine[];
   magazinesData: Magazine[];
 }> => {
-  const magazinesData = await fetch(
-    `${process.env.NEXT_PUBLIC_URL}/api/magazines`,
-    fetchOptions
-  ).then((res) => (res.ok ? res.json() : []));
+  const magazinesData = await getMagazines();
 
   const filteredMags = magazinesData.filter(
     (mag: Magazine) => !mag.field.includes("too-big")

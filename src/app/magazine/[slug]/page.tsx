@@ -14,7 +14,11 @@ import convertTitleToSlug from "@/utils/convertTitleToSlug";
 import RecomendationsSection from "@/components/SingleMagazine/ReccomendationsSection";
 import getRightArticle from "@/utils/getRightArticle";
 import SmallNav from "@/components/SmallNav";
-import { fetchOptions } from "@/app/constants/fetchOptions";
+import {
+  getMagazineById,
+  getMagazinePageData,
+  getMagazines,
+} from "@/lib/notion";
 
 const dataFetcher = async (
   slug: string
@@ -23,10 +27,7 @@ const dataFetcher = async (
   magazineData: any;
   magazineMeta: Magazine;
 }> => {
-  const magazinesData = await fetch(
-    `${process.env.NEXT_PUBLIC_URL}/api/magazines`,
-    fetchOptions
-  ).then((res) => res.json());
+  const magazinesData = await getMagazines();
 
   const match = magazinesData.find(
     (mag: Magazine) => convertTitleToSlug(mag.name) === slug
@@ -36,17 +37,12 @@ const dataFetcher = async (
 
   const path = match.id;
 
-  const magazineData = await fetch(
-    process.env.NEXT_PUBLIC_URL + `/api/magazineData/${path}`,
-    fetchOptions
-  ).then((res) => res.json());
+  const [magazineData, magazineMeta] = await Promise.all([
+    getMagazinePageData(path),
+    getMagazineById(path),
+  ]);
 
-  const magazineMeta = await fetch(
-    process.env.NEXT_PUBLIC_URL + `/api/magazine/${path}`,
-    fetchOptions
-  ).then((res) => res.json());
-
-  if (!magazineMeta.doesHaveAPage) notFound();
+  if (!magazineMeta?.doesHaveAPage) notFound();
 
   return { allMags: magazinesData, magazineData, magazineMeta };
 };
@@ -184,10 +180,7 @@ export async function generateMetadata(
 }
 
 export async function generateStaticParams() {
-  const url = `${process.env.NEXT_PUBLIC_URL}/api/magazines`;
-  const magazinesData = await fetch(url, fetchOptions).then((res) =>
-    res.json()
-  );
+  const magazinesData = await getMagazines();
 
   const magsWithPages = magazinesData.filter(
     (mag: Magazine) => mag.doesHaveAPage
