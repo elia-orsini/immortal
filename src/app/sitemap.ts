@@ -4,6 +4,10 @@ import Magazine from "@/types/IMagazine";
 import convertTitleToSlug from "@/utils/convertTitleToSlug";
 import { getMagazines } from "@/lib/notion";
 
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
+  "https://immortalmags.eorsini.xyz";
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const magazinesData = await getMagazines();
 
@@ -12,9 +16,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   magazinesData.map((mag: Magazine) => {
     if (mag.doesHaveAPage) {
       sitemapPages.push({
-        url: `https://immortal-mags.xyz/magazine/${convertTitleToSlug(
-          mag.name
-        )}`,
+        url: `${SITE_URL}/magazine/${convertTitleToSlug(mag.name)}`,
         lastModified: new Date(),
         changeFrequency: "monthly",
       });
@@ -23,7 +25,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     {
-      url: "https://immortal-mags.xyz",
+      url: SITE_URL,
       lastModified: new Date(),
       changeFrequency: "weekly",
     },
